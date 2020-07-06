@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NGUOIDUNGsController.cs" />
     <Compile Include="Areas\Login\Controllers\LoginController.cs" />
     <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
     <Compile Include="Areas\PDT\Controllers\BAOCAO_SV_NOHPController.cs" />
@@ -2043,11 +2045,6 @@
     <Content Include="Areas\PDT\Views\TINHs\Details.cshtml" />
     <Content Include="Areas\PDT\Views\TINHs\Edit.cshtml" />
     <Content Include="Areas\PDT\Views\TINHs\Index.cshtml" />
-    <Content Include="Areas\Login\Views\NGUOIDUNGs\Create.cshtml" />
-    <Content Include="Areas\Login\Views\NGUOIDUNGs\Delete.cshtml" />
-    <Content Include="Areas\Login\Views\NGUOIDUNGs\Details.cshtml" />
-    <Content Include="Areas\Login\Views\NGUOIDUNGs\Edit.cshtml" />
-    <Content Include="Areas\Login\Views\NGUOIDUNGs\Index.cshtml" />
     <Content Include="Areas\Login\Views\Login\Login.cshtml" />
     <Content Include="Areas\Login\Views\Login\ErrorPage.cshtml" />
     <Content Include="Areas\PDT\Views\PDT\HomePDT.cshtml" />
@@ -2106,6 +2103,13 @@
     <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Edit.cshtml" />
     <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Index.cshtml" />
     <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\ListHK.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\HomeAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\NGUOIDUNGs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NGUOIDUNGs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NGUOIDUNGs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NGUOIDUNGs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NGUOIDUNGs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2133,9 +2137,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Login\Data\" />
     <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Areas\PDT\Data\" />

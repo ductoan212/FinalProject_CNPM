@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FinalProject.Models.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Danh sách các tài khoản</h1>
+
+<div class="card-body">
+    <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="col-sm-12">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Tên đăng nhập
+                            </th>
+                            <th>
+                                Mật khẩu
+                            </th>
+                            <th>
+                                Nhóm người dùng
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>
+                                Tên đăng nhập
+                            </th>
+                            <th>
+                                Mật khẩu
+                            </th>
+                            <th>
+                                Nhóm người dùng
+                            </th>
+                    </tfoot>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenDangNhap)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MatKhau)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NHOMNGUOIDUNG.TenNhomNguoiDung)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
