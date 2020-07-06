@@ -12,7 +12,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Thêm mới", "List", new { @MaHKNH = ViewBag.TenHK.MaHKNH }, new { @class = "btn btn-primary" })
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -66,16 +66,16 @@
                                     @Html.DisplayFor(modelItem => item.MONHOC.SoTiet)
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Thao tác
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="@Url.Action("Details", "DS_MONHOC_MO", new { id = item.MaMo })">Chi tiết</a>
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "DS_MONHOC_MO", new { id = item.MaMo })">Sửa</a>
-                                            <a class="dropdown-item" href="@Url.Action("Delete", "DS_MONHOC_MO", new { id = item.MaMo })">Xóa</a>
-                                        </div>
-                                    </div>
+                                    @*<div class="dropdown">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Thao tác
+                                    </button>
+                                    <div class="dropdown-menu">*@
+                                    @* <a class="dropdown-item" href="@Url.Action("Details", "DS_MONHOC_MO", new { id = item.MaMo })">Chi tiết</a>*@
+                                    @*<a class="dropdown-item" href="@Url.Action("Edit", "DS_MONHOC_MO", new { id = item.MaMo })">Sửa</a>*@
+                                    <a class="btn btn-danger" href="@Url.Action("Delete", "DS_MONHOC_MO", new { id = item.MaMo })">Xóa</a>
+                                    @*</div>
+                                    </div>*@
                                 </td>
                             </tr>
                         }
@@ -83,5 +83,6 @@
                 </div>
             </div>
         </div>
+        @Html.ActionLink("Quay lại", "ListHK", null, new { @class = "btn btn-link" })
     </div>
 </div>

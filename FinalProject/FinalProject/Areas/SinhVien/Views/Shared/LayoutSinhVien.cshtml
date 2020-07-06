@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>NM CNPM</title>
+    <title>Quản lý đăng ký môn học và thu học phí</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,9 +34,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("HomeSinhVien", "SinhVien", new {TenDangNhap = ViewData["TenDangNhap"]})">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-book"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Trang chủ</div>
             </a>
 
             <!-- Divider -->
@@ -46,7 +46,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="@Url.Action("HomeSinhVien", "SinhVien", new {TenDangNhap = ViewData["TenDangNhap"]})">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>Nhà của tôi</span>
                 </a>
             </li>
 
@@ -55,11 +55,16 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Dịch vụ
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Details", "SINHVIENs", new { id = ViewData["TenDangNhap"]})">Lý lịch sinh viên</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "CT_NGANH", new { id = ViewData["TenDangNhap"]})">Chương trình học</a>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -79,7 +84,8 @@
                 @Html.ActionLink("Thông tin phiếu thu", "Index", "PHIEUTHUs", new { id = ViewData["TenDangNhap"] }, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link" })
+                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline" })
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 d-inline"></i>
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -121,7 +127,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
+                        <span>Quản lý đăng ký môn học và thu học phí - MN CNPM</span>
                     </div>
                 </div>
             </footer>

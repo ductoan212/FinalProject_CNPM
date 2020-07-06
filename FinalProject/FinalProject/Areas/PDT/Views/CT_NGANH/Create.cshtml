@@ -33,7 +33,7 @@
         <div class="form-group">
             <div class="control-label col-md-2">Học kỳ thêm vào</div>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HocKy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.HocKy, new { htmlAttributes = new { @max = "8", @min="1", @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HocKy, "", new { @class = "text-danger" })
             </div>
         </div>

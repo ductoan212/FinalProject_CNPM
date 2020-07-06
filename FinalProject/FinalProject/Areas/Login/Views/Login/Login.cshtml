@@ -26,8 +26,16 @@
 
 </head>
 
-<body class="bg-gradient-primary">
-    <div class="container">
+<body style="height: 100vh; background-color: #4e73df; background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%); background-size: cover;">
+    <div style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 80vw;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    margin-right: auto;
+    margin-left: auto">
         <!-- Outer Row -->
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -44,25 +52,22 @@
                                     @using (Html.BeginForm())
                                     {
                                         <div class="form-group">
-                                            <input name="TenDangNhap" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input name="TenDangNhap" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Tên đăng nhập">
                                         </div>
                                         <div class="form-group">
-                                            <input name="MatKhau" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input name="MatKhau" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mật khẩu">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                <label class="custom-control-label" for="customCheck">Lưu mật khẩu</label>
                                             </div>
                                         </div>
-                                        <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
+                                        <input type="submit" value="Đăng nhập" class="btn btn-primary btn-user btn-block">
                                     }
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="#">Quên mật khẩu</a>
                                     </div>
                                 </div>
                             </div>

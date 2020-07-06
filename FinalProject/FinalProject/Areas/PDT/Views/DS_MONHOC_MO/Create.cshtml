@@ -26,7 +26,13 @@
         <div class="form-group">
             Mã học kỳ
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MaHKNH, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MaHKNH, new { @class = "form-control" })
+                @*<select class="form-control" id="MaHKNH">
+                    @foreach(var item in ViewBag.ListHK)
+                    {
+                        <option value="@item.MaHKNH">HK @item.HocKy (@item.Nam1-@item.Nam2)</option>
+                    }
+                </select>*@
                 @Html.ValidationMessageFor(model => model.MaHKNH, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +47,7 @@
         </div>
     </div>
 }
-
+<hr />
 <div>
     @Html.ActionLink("Quay lại", "ListHK")
 </div>

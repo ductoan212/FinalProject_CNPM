@@ -150,6 +150,7 @@
     <Compile Include="Areas\PDT\Controllers\SINHVIENsController.cs" />
     <Compile Include="Areas\PDT\Controllers\TINHsController.cs" />
     <Compile Include="Areas\PDT\PDTAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\CT_NGANHController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CT_PHIEUDKController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\PHIEUTHUsController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\PHIEU_DKController.cs" />
@@ -2126,6 +2127,7 @@
     <Content Include="Areas\SinhVien\Views\CT_PHIEUDK\Delete.cshtml" />
     <Content Include="Areas\SinhVien\Views\PHIEUTHUs\Details.cshtml" />
     <Content Include="Areas\SinhVien\Views\PHIEUTHUs\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CT_NGANH\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

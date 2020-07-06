@@ -48,9 +48,9 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: DS_MONHOC_MO/Create
-        public ActionResult Create(int isErr = 0)
+        public ActionResult Create(string hknh,int isErr = 0)
         {
-            ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy");
+            ViewBag.ListHK = db.HKNHs.ToList();
             //ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc");
             ViewBag.IsErr = isErr;
             return View();
@@ -131,12 +131,10 @@ namespace FinalProject.Areas.PDT.Controllers
                 if (ids == null)
                 {
                     ViewBag.IsNull = 1;
-                    return RedirectToAction("ListHK");
+                    return RedirectToAction("Index", new { id = hk });
                 }
                 try
                 {
-
-
                     foreach (string id in ids)
                     {
 
@@ -160,7 +158,7 @@ namespace FinalProject.Areas.PDT.Controllers
                 }
                 //db.DS_MONHOC_MO.Add(dS_MONHOC_MO);
                 //db.SaveChanges();
-                return RedirectToAction("ListHK");
+                return RedirectToAction("Index", new { id = hk });
             }
 
             //ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy", dS_MONHOC_MO.MaHKNH);
@@ -224,9 +222,10 @@ namespace FinalProject.Areas.PDT.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             DS_MONHOC_MO dS_MONHOC_MO = db.DS_MONHOC_MO.Find(id);
+            string hknh = dS_MONHOC_MO.MaHKNH.ToString();
             db.DS_MONHOC_MO.Remove(dS_MONHOC_MO);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = hknh });
         }
 
         protected override void Dispose(bool disposing)

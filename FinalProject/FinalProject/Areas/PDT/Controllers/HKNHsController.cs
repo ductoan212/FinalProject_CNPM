@@ -52,7 +52,7 @@ namespace FinalProject.Areas.PDT.Controllers
             {
                 db.HKNHs.Add(hKNH);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListHK", "DS_MONHOC_MO");
             }
 
             return View(hKNH);

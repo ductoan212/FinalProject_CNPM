@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Phòng đào tạo</title>
 
     <!-- Custom fonts for this template -->
     <link href="~/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("HomePDT", "PDT", new {TenDangNhap = ViewData["TenDangNhap"]})">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-book"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Trang chủ</div>
             </a>
@@ -61,23 +61,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index", "MONHOCs", new { area = "PDT" })">Danh sách môn học</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("ListHK", "DS_MONHOC_MO", new { area = "PDT" })">Danh sách môn học mở</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index", "PHIEUTHUs", new { area = "PDT" })">Danh sách phiếu thu</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index", "PHIEU_DK", new { area = "PDT" })">Đăng ký môn học</a>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Chương trình học</span>
@@ -94,10 +77,34 @@
 
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-book"></i>
+                    <span>Môn học mở</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Môn học mở</h6>
+                        @*<a class="collaBpse-item" href="@Url.Action("Index", "HKNHs", new { area = "PDT" })">Danh sách học kỳ</a>*@
+                        <a class="collapse-item" href="@Url.Action("Index", "MONHOCs", new { area = "PDT" })">Danh sách môn học</a>
+                        <a class="collapse-item" href="@Url.Action("ListHK", "DS_MONHOC_MO", new { area = "PDT" })">Danh sách môn học mở</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "PHIEU_DK", new { area = "PDT" })">Đăng ký môn học</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index", "PHIEUTHUs", new { area = "PDT" })">Danh sách phiếu thu</a>
+            </li>
+
+            <li class="nav-item">
                 @Html.ActionLink("Báo cáo nợ học phí", "ListHK", "BAOCAO_SV_NOHP", new { area = "PDT" }, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link" })
+                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline" })
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 d-inline"></i>
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -139,7 +146,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Nhập môn Công nghệ Phần mềm - Quản lý đk môn học và thu học phí</span>
+                        <span>Nhập môn Công nghệ Phần mềm - Quản lý đăng ký môn học và thu học phí</span>
                     </div>
                 </div>
             </footer>

@@ -5,18 +5,17 @@
     Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Thêm huyện</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>HUYEN</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.MaHuyen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class = "control-label col-md-2">Mã huyện</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MaHuyen, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MaHuyen, "", new { @class = "text-danger" })
@@ -24,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TenHuyen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Tên huyện</div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenHuyen, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenHuyen, "", new { @class = "text-danger" })
@@ -32,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MaTinh, "MaTinh", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Thuộc tỉnh</div>
             <div class="col-md-10">
                 @Html.DropDownList("MaTinh", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MaTinh, "", new { @class = "text-danger" })
@@ -40,23 +39,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UuTien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">Ưu tiên</div>
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.UuTien)
-                    @Html.ValidationMessageFor(model => model.UuTien, "", new { @class = "text-danger" })
-                </div>
+                @Html.RadioButtonFor(model => model.UuTien, true)
+                Có
+                <br />
+                @Html.RadioButtonFor(model => model.UuTien, false)
+                Không
+                <br />
+                @Html.ValidationMessageFor(model => model.UuTien, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Tạo" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
-
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "Index")
 </div>
