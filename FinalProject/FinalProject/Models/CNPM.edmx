@@ -102,26 +102,18 @@
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
-            <PropertyRef Name="IDTaiKhoan" />
+            <PropertyRef Name="TenDangNhap" />
           </Key>
-          <Property Name="IDTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenDangNhap" Type="varchar" MaxLength="50" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+          <Property Name="IDNhomNguoiDung" Type="int" />
         </EntityType>
         <EntityType Name="NHOMNGUOIDUNG">
           <Key>
             <PropertyRef Name="IDNhomNguoiDung" />
           </Key>
-          <Property Name="IDNhomNguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenNhomNguoiDung" Type="nvarchar" MaxLength="30" />
-        </EntityType>
-        <EntityType Name="PHANQUYEN">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="IDTaiKhoan" Type="int" Nullable="false" />
           <Property Name="IDNhomNguoiDung" Type="int" Nullable="false" />
+          <Property Name="TenNhomNguoiDung" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="PHIEU_DK">
           <Key>
@@ -260,6 +252,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ND_NND">
+          <End Role="NHOMNGUOIDUNG" Type="Self.NHOMNGUOIDUNG" Multiplicity="0..1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHOMNGUOIDUNG">
+              <PropertyRef Name="IDNhomNguoiDung" />
+            </Principal>
+            <Dependent Role="NGUOIDUNG">
+              <PropertyRef Name="IDNhomNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NGANH_KHOA">
           <End Role="KHOA" Type="Self.KHOA" Multiplicity="0..1" />
           <End Role="NGANH" Type="Self.NGANH" Multiplicity="*" />
@@ -293,30 +297,6 @@
             </Principal>
             <Dependent Role="PHIEU_DK">
               <PropertyRef Name="MaSinhVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PQ_NND">
-          <End Role="NHOMNGUOIDUNG" Type="Self.NHOMNGUOIDUNG" Multiplicity="1" />
-          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHOMNGUOIDUNG">
-              <PropertyRef Name="IDNhomNguoiDung" />
-            </Principal>
-            <Dependent Role="PHANQUYEN">
-              <PropertyRef Name="IDNhomNguoiDung" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PQ_TK">
-          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
-          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NGUOIDUNG">
-              <PropertyRef Name="IDTaiKhoan" />
-            </Principal>
-            <Dependent Role="PHANQUYEN">
-              <PropertyRef Name="IDTaiKhoan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,7 +386,6 @@
           <EntitySet Name="NGANH" EntityType="Self.NGANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHOMNGUOIDUNG" EntityType="Self.NHOMNGUOIDUNG" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PHANQUYEN" EntityType="Self.PHANQUYEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEU_DK" EntityType="Self.PHIEU_DK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SINHVIEN" EntityType="Self.SINHVIEN" Schema="dbo" store:Type="Tables" />
@@ -443,6 +422,10 @@
             <End Role="LOAIMON" EntitySet="LOAIMON" />
             <End Role="MONHOC" EntitySet="MONHOC" />
           </AssociationSet>
+          <AssociationSet Name="FK_ND_NND" Association="Self.FK_ND_NND">
+            <End Role="NHOMNGUOIDUNG" EntitySet="NHOMNGUOIDUNG" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+          </AssociationSet>
           <AssociationSet Name="FK_NGANH_KHOA" Association="Self.FK_NGANH_KHOA">
             <End Role="KHOA" EntitySet="KHOA" />
             <End Role="NGANH" EntitySet="NGANH" />
@@ -454,14 +437,6 @@
           <AssociationSet Name="FK_PDK_SV" Association="Self.FK_PDK_SV">
             <End Role="SINHVIEN" EntitySet="SINHVIEN" />
             <End Role="PHIEU_DK" EntitySet="PHIEU_DK" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PQ_NND" Association="Self.FK_PQ_NND">
-            <End Role="NHOMNGUOIDUNG" EntitySet="NHOMNGUOIDUNG" />
-            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PQ_TK" Association="Self.FK_PQ_TK">
-            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
-            <End Role="PHANQUYEN" EntitySet="PHANQUYEN" />
           </AssociationSet>
           <AssociationSet Name="FK_PT_DK" Association="Self.FK_PT_DK">
             <End Role="PHIEU_DK" EntitySet="PHIEU_DK" />
@@ -613,30 +588,20 @@
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
-            <PropertyRef Name="IDTaiKhoan" />
+            <PropertyRef Name="TenDangNhap" />
           </Key>
-          <Property Name="IDTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PHANQUYENs" Relationship="Self.FK_PQ_TK" FromRole="NGUOIDUNG" ToRole="PHANQUYEN" />
+          <Property Name="IDNhomNguoiDung" Type="Int32" />
+          <NavigationProperty Name="NHOMNGUOIDUNG" Relationship="Self.FK_ND_NND" FromRole="NGUOIDUNG" ToRole="NHOMNGUOIDUNG" />
         </EntityType>
         <EntityType Name="NHOMNGUOIDUNG">
           <Key>
             <PropertyRef Name="IDNhomNguoiDung" />
           </Key>
-          <Property Name="IDNhomNguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenNhomNguoiDung" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PHANQUYENs" Relationship="Self.FK_PQ_NND" FromRole="NHOMNGUOIDUNG" ToRole="PHANQUYEN" />
-        </EntityType>
-        <EntityType Name="PHANQUYEN">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="IDTaiKhoan" Type="Int32" Nullable="false" />
           <Property Name="IDNhomNguoiDung" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK_PQ_TK" FromRole="PHANQUYEN" ToRole="NGUOIDUNG" />
-          <NavigationProperty Name="NHOMNGUOIDUNG" Relationship="Self.FK_PQ_NND" FromRole="PHANQUYEN" ToRole="NHOMNGUOIDUNG" />
+          <Property Name="TenNhomNguoiDung" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK_ND_NND" FromRole="NHOMNGUOIDUNG" ToRole="NGUOIDUNG" />
         </EntityType>
         <EntityType Name="PHIEU_DK">
           <Key>
@@ -870,26 +835,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PQ_TK">
-          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
-          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NGUOIDUNG">
-              <PropertyRef Name="IDTaiKhoan" />
-            </Principal>
-            <Dependent Role="PHANQUYEN">
-              <PropertyRef Name="IDTaiKhoan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PQ_NND">
-          <End Role="NHOMNGUOIDUNG" Type="Self.NHOMNGUOIDUNG" Multiplicity="1" />
-          <End Role="PHANQUYEN" Type="Self.PHANQUYEN" Multiplicity="*" />
+        <Association Name="FK_ND_NND">
+          <End Role="NHOMNGUOIDUNG" Type="Self.NHOMNGUOIDUNG" Multiplicity="0..1" />
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHOMNGUOIDUNG">
               <PropertyRef Name="IDNhomNguoiDung" />
             </Principal>
-            <Dependent Role="PHANQUYEN">
+            <Dependent Role="NGUOIDUNG">
               <PropertyRef Name="IDNhomNguoiDung" />
             </Dependent>
           </ReferentialConstraint>
@@ -932,7 +885,6 @@
           <EntitySet Name="NGANHs" EntityType="Self.NGANH" />
           <EntitySet Name="NGUOIDUNGs" EntityType="Self.NGUOIDUNG" />
           <EntitySet Name="NHOMNGUOIDUNGs" EntityType="Self.NHOMNGUOIDUNG" />
-          <EntitySet Name="PHANQUYENs" EntityType="Self.PHANQUYEN" />
           <EntitySet Name="PHIEU_DK" EntityType="Self.PHIEU_DK" />
           <EntitySet Name="PHIEUTHUs" EntityType="Self.PHIEUTHU" />
           <EntitySet Name="SINHVIENs" EntityType="Self.SINHVIEN" />
@@ -997,13 +949,9 @@
             <End Role="NGANH" EntitySet="NGANHs" />
             <End Role="SINHVIEN" EntitySet="SINHVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK_PQ_TK" Association="Self.FK_PQ_TK">
-            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
-            <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PQ_NND" Association="Self.FK_PQ_NND">
+          <AssociationSet Name="FK_ND_NND" Association="Self.FK_ND_NND">
             <End Role="NHOMNGUOIDUNG" EntitySet="NHOMNGUOIDUNGs" />
-            <End Role="PHANQUYEN" EntitySet="PHANQUYENs" />
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
           </AssociationSet>
           <AssociationSet Name="FK_PDK_SV" Association="Self.FK_PDK_SV">
             <End Role="SINHVIEN" EntitySet="SINHVIENs" />
@@ -1126,9 +1074,9 @@
           <EntitySetMapping Name="NGUOIDUNGs">
             <EntityTypeMapping TypeName="CNPMModel.NGUOIDUNG">
               <MappingFragment StoreEntitySet="NGUOIDUNG">
-                <ScalarProperty Name="IDTaiKhoan" ColumnName="IDTaiKhoan" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="IDNhomNguoiDung" ColumnName="IDNhomNguoiDung" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1137,15 +1085,6 @@
               <MappingFragment StoreEntitySet="NHOMNGUOIDUNG">
                 <ScalarProperty Name="IDNhomNguoiDung" ColumnName="IDNhomNguoiDung" />
                 <ScalarProperty Name="TenNhomNguoiDung" ColumnName="TenNhomNguoiDung" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PHANQUYENs">
-            <EntityTypeMapping TypeName="CNPMModel.PHANQUYEN">
-              <MappingFragment StoreEntitySet="PHANQUYEN">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDTaiKhoan" ColumnName="IDTaiKhoan" />
-                <ScalarProperty Name="IDNhomNguoiDung" ColumnName="IDNhomNguoiDung" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,53 @@
+﻿@model FinalProject.Models.SINHVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Chi tiết sinh viên</h2>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <tbody>
+        <tr>
+            <th>Mã sinh viên</th>
+            <td>@Html.DisplayFor(model => model.MaSinhVien)</td>
+        </tr>
+
+        <tr>
+            <th>Họ tên</th>
+            <td>@Html.DisplayFor(model => model.HoTen)</td>
+        </tr>
+
+        <tr>
+            <th>Giới tính</th>
+            <td>@Html.DisplayFor(model => model.GioiTinh)</td>
+        </tr>
+
+        <tr>
+            <th>Ngày sinh</th>
+            <td>@Html.DisplayFor(model => model.NgaySinh.Day)/@Html.DisplayFor(model => model.NgaySinh.Month)/@Html.DisplayFor(model => model.NgaySinh.Year) </td>
+        </tr>
+
+        <tr>
+            <th>Loại đối tượng</th>
+            <td>@Html.DisplayFor(model => model.DOITUONG.TenDoiTuong)</td>
+        </tr>
+
+        <tr>
+            <th>Quê quán</th>
+            <td>@Html.DisplayFor(model => model.HUYEN.TenHuyen) - @Html.DisplayFor(model => model.HUYEN.TINH.TenTinh)</td>
+
+        </tr>
+
+        <tr>
+            <th>Ngành</th>
+            <td>@Html.DisplayFor(model => model.NGANH.TenNganh)</td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Sửa", "Edit", new { id = Model.MaSinhVien }, new { @class = "btn btn-warning" })
+<br />
+<br />
+@Html.ActionLink("Quay lại", "Index")

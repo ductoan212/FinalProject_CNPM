@@ -1,0 +1,94 @@
+﻿@model IEnumerable<FinalProject.Models.LOAIMON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+<h1 class="h3 mb-2 text-gray-800">Danh sách Loại môn</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã loại môn
+                                </th>
+                                <th>
+                                    Tên loại môn
+                                </th>
+                                <th>
+                                    Số tiết tín chỉ
+                                </th>
+                                <th>
+                                    Số tiền tín chỉ
+                                </th>
+                                <th style="width:50px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Mã loại môn
+                                </th>
+                                <th>
+                                    Tên loại môn
+                                </th>
+                                <th>
+                                    Số tiết tín chỉ
+                                </th>
+                                <th>
+                                    Số tiền tín chỉ
+                                </th>
+                                <th style="width:50px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaLoaiMon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenLoaiMon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTietTC)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTienTC)
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Thao tác
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Edit", "LOAIMONs", new { id = item.MaLoaiMon })">Sửa</a>
+                                            <a class="dropdown-item" href="@Url.Action("Delete", "LOAIMONs", new { id = item.MaLoaiMon })">Xóa</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+            @Html.ActionLink("Quay lại DS môn học", "Index", "MONHOCs", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>

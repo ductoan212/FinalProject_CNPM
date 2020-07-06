@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FinalProject.Models.NGANH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Danh sách các ngành</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên ngành
+                                </th>
+                                <th>
+                                    Khoa quản lý
+                                </th>
+                                <th width="200px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Tên ngành
+                                </th>
+                                <th>
+                                    Khoa quản lý
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenNganh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KHOA.TenKhoa)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Chi tiết chương trình học", "Index", "CT_NGANH", new { id = item.MaNganh }, new { @class = "btn btn-outline-primary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

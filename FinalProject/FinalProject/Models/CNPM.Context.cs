@@ -38,7 +38,6 @@ namespace FinalProject.Models
         public virtual DbSet<NGANH> NGANHs { get; set; }
         public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
         public virtual DbSet<NHOMNGUOIDUNG> NHOMNGUOIDUNGs { get; set; }
-        public virtual DbSet<PHANQUYEN> PHANQUYENs { get; set; }
         public virtual DbSet<PHIEU_DK> PHIEU_DK { get; set; }
         public virtual DbSet<PHIEUTHU> PHIEUTHUs { get; set; }
         public virtual DbSet<SINHVIEN> SINHVIENs { get; set; }

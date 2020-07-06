@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class HUYEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +19,12 @@ namespace FinalProject.Models
         {
             this.SINHVIENs = new HashSet<SINHVIEN>();
         }
-    
+
         public string MaHuyen { get; set; }
         public string TenHuyen { get; set; }
         public string MaTinh { get; set; }
         public Nullable<bool> UuTien { get; set; }
-    
+
         public virtual TINH TINH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SINHVIEN> SINHVIENs { get; set; }

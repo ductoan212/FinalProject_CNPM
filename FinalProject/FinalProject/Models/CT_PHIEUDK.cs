@@ -11,13 +11,13 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class CT_PHIEUDK
     {
         public string SoPhieuDK { get; set; }
         public string MaMo { get; set; }
         public string GhiChu { get; set; }
-    
+
         public virtual DS_MONHOC_MO DS_MONHOC_MO { get; set; }
         public virtual PHIEU_DK PHIEU_DK { get; set; }
     }

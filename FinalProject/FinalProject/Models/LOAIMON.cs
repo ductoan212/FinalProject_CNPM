@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class LOAIMON
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +19,12 @@ namespace FinalProject.Models
         {
             this.MONHOCs = new HashSet<MONHOC>();
         }
-    
+
         public string MaLoaiMon { get; set; }
         public string TenLoaiMon { get; set; }
         public Nullable<int> SoTietTC { get; set; }
         public Nullable<decimal> SoTienTC { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MONHOC> MONHOCs { get; set; }
     }

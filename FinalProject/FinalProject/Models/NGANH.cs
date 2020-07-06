@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class NGANH
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +20,11 @@ namespace FinalProject.Models
             this.CT_NGANH = new HashSet<CT_NGANH>();
             this.SINHVIENs = new HashSet<SINHVIEN>();
         }
-    
+
         public string MaNganh { get; set; }
         public string MaKhoa { get; set; }
         public string TenNganh { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_NGANH> CT_NGANH { get; set; }
         public virtual KHOA KHOA { get; set; }

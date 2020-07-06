@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class KHOA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +19,10 @@ namespace FinalProject.Models
         {
             this.NGANHs = new HashSet<NGANH>();
         }
-    
+
         public string MaKhoa { get; set; }
         public string TenKhoa { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NGANH> NGANHs { get; set; }
     }

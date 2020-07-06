@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class HKNH
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +21,13 @@ namespace FinalProject.Models
             this.DS_MONHOC_MO = new HashSet<DS_MONHOC_MO>();
             this.PHIEU_DK = new HashSet<PHIEU_DK>();
         }
-    
+
         public string MaHKNH { get; set; }
         public string HocKy { get; set; }
         public Nullable<int> Nam1 { get; set; }
         public Nullable<int> Nam2 { get; set; }
         public Nullable<System.DateTime> HanDongHocPhi { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOCAO_SV_NOHP> BAOCAO_SV_NOHP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

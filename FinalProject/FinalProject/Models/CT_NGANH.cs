@@ -11,13 +11,13 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class CT_NGANH
     {
         public string MaNganh { get; set; }
         public string MaMonHoc { get; set; }
         public int HocKy { get; set; }
-    
+
         public virtual MONHOC MONHOC { get; set; }
         public virtual NGANH NGANH { get; set; }
     }

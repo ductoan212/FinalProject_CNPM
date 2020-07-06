@@ -11,19 +11,19 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class NHOMNGUOIDUNG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NHOMNGUOIDUNG()
         {
-            this.PHANQUYENs = new HashSet<PHANQUYEN>();
+            this.NGUOIDUNGs = new HashSet<NGUOIDUNG>();
         }
-    
+
         public int IDNhomNguoiDung { get; set; }
         public string TenNhomNguoiDung { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHANQUYEN> PHANQUYENs { get; set; }
+        public virtual ICollection<NGUOIDUNG> NGUOIDUNGs { get; set; }
     }
 }

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FinalProject.Models.KHOA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+<h1 class="h3 mb-2 text-gray-800">Danh sách khoa</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên khoa
+                                </th>
+                                <th width="200px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Tên khoa
+                                </th>
+                                <th width="200px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenKhoa)
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a href="@Url.Action("Edit", "KHOAs", new { id = item.MaKhoa })" class="btn btn-outline-primary">
+                                            Chỉnh sửa
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

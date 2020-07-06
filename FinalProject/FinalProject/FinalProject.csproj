@@ -128,7 +128,27 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Login\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
+    <Compile Include="Areas\PDT\Controllers\BAOCAO_SV_NOHPController.cs" />
+    <Compile Include="Areas\PDT\Controllers\CT_NGANHController.cs" />
+    <Compile Include="Areas\PDT\Controllers\CT_PHIEUDKController.cs" />
+    <Compile Include="Areas\PDT\Controllers\DOITUONGsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\DS_MONHOC_MOController.cs" />
+    <Compile Include="Areas\PDT\Controllers\HKNHsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\HUYENsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\KHOAsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\LOAIMONsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\MONHOCsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\NGANHsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\PDTController.cs" />
+    <Compile Include="Areas\PDT\Controllers\PHIEUTHUsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\PHIEU_DKController.cs" />
+    <Compile Include="Areas\PDT\Controllers\SINHVIENsController.cs" />
+    <Compile Include="Areas\PDT\Controllers\TINHsController.cs" />
     <Compile Include="Areas\PDT\PDTAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -185,9 +205,6 @@
       <DependentUpon>CNPM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHOMNGUOIDUNG.cs">
-      <DependentUpon>CNPM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PHANQUYEN.cs">
       <DependentUpon>CNPM.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUTHU.cs">
@@ -1822,8 +1839,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\CNPM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CNPM.Context.cs</LastGenOutput>
       <DependentUpon>CNPM.edmx</DependentUpon>
+      <LastGenOutput>CNPM.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\CNPM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1832,13 +1849,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\CNPM.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CNPM.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CNPM.edmx.diagram">
-      <DependentUpon>CNPM.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\scss\navs\_global.scss" />
     <Content Include="Assets\scss\navs\_sidebar.scss" />
     <Content Include="Assets\scss\navs\_topbar.scss" />
@@ -2007,6 +2017,95 @@
     <Content Include="Assets\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\PDT\Views\web.config" />
+    <Content Include="Areas\Login\Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\SinhVien\Views\web.config" />
+    <EntityDeploy Include="Models\CNPM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CNPM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CNPM.edmx.diagram">
+      <DependentUpon>CNPM.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\PDT\Views\Shared\LayoutPDT.cshtml" />
+    <Content Include="Areas\PDT\Views\SINHVIENs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\SINHVIENs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\SINHVIENs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\SINHVIENs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\SINHVIENs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\HUYENs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\HUYENs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\HUYENs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\HUYENs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\HUYENs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\TINHs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\TINHs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\TINHs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\TINHs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\TINHs\Index.cshtml" />
+    <Content Include="Areas\Login\Views\NGUOIDUNGs\Create.cshtml" />
+    <Content Include="Areas\Login\Views\NGUOIDUNGs\Delete.cshtml" />
+    <Content Include="Areas\Login\Views\NGUOIDUNGs\Details.cshtml" />
+    <Content Include="Areas\Login\Views\NGUOIDUNGs\Edit.cshtml" />
+    <Content Include="Areas\Login\Views\NGUOIDUNGs\Index.cshtml" />
+    <Content Include="Areas\Login\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Login\Views\Login\ErrorPage.cshtml" />
+    <Content Include="Areas\PDT\Views\PDT\HomePDT.cshtml" />
+    <Content Include="Areas\PDT\Views\DOITUONGs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\DOITUONGs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\DOITUONGs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\DOITUONGs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\MONHOCs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\MONHOCs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\MONHOCs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\MONHOCs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\MONHOCs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\LOAIMONs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\LOAIMONs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\LOAIMONs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\LOAIMONs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\LOAIMONs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\ListHK.cshtml" />
+    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\List.cshtml" />
+    <Content Include="Areas\PDT\Views\HKNHs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\HKNHs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\HKNHs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\HKNHs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\HKNHs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEU_DK\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEU_DK\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEU_DK\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_PHIEUDK\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_PHIEUDK\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEUTHUs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEUTHUs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEUTHUs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEUTHUs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\PHIEUTHUs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\KHOAs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\KHOAs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\KHOAs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\NGANHs\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\NGANHs\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\NGANHs\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\NGANHs\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\NGANHs\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_NGANH\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_NGANH\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_NGANH\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_NGANH\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\CT_NGANH\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Create.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Delete.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Details.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Edit.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\Index.cshtml" />
+    <Content Include="Areas\PDT\Views\BAOCAO_SV_NOHP\ListHK.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2034,9 +2133,15 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\PDT\Controllers\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Login\Data\" />
+    <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Areas\PDT\Data\" />
-    <Folder Include="Areas\PDT\Views\Shared\" />
+    <Folder Include="Areas\SinhVien\Controllers\" />
+    <Folder Include="Areas\SinhVien\Data\" />
+    <Folder Include="Areas\SinhVien\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -11,14 +11,15 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class BAOCAO_SV_NOHP
     {
         public string MaHKNH { get; set; }
         public string MaSinhVien { get; set; }
         public Nullable<decimal> SoTienConLai { get; set; }
-    
+
         public virtual HKNH HKNH { get; set; }
         public virtual SINHVIEN SINHVIEN { get; set; }
+        public virtual PHIEU_DK PHIEU_DK { get; set; }
     }
 }

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalProject.Models.TINH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Danh sách tỉnh</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quản lý Huyện", "Index", "HUYENs", null, new { @class = "btn btn-secondary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên tỉnh
+                                </th>
+                                <th width="50%">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Tên tỉnh
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenTinh)
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Thao tác
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Details", "TINHs", new { id = item.MaTinh })">Chi tiết</a>
+                                            <a class="dropdown-item" href="@Url.Action("Edit", "TINHs", new { id = item.MaTinh })">Sửa</a>
+                                            <a class="dropdown-item" href="@Url.Action("Delete", "TINHs", new { id = item.MaTinh })">Xóa</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+            @Html.ActionLink("Quay lại DS sinh viên", "Index", "SINHVIENs", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>

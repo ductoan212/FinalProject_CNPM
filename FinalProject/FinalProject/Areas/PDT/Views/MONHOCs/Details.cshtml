@@ -1,0 +1,38 @@
+﻿@model FinalProject.Models.MONHOC
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Chi tiết môn học</h2>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <tbody>
+        <tr>
+            <th>Mã môn học</th>
+            <td>@Html.DisplayFor(model => model.MaMonHoc)</td>
+        </tr>
+
+        <tr>
+            <th>Tên môn học</th>
+            <td>@Html.DisplayFor(model => model.TenMonHoc)</td>
+        </tr>
+
+        <tr>
+            <th>Loại môn</th>
+            <td>@Html.DisplayFor(model => model.LOAIMON.TenLoaiMon)</td>
+        </tr>
+
+
+        <tr>
+            <th>Số tiết</th>
+            <td>@Html.DisplayFor(model => model.SoTiet)</td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Sửa", "Edit", new { id = Model.MaMonHoc }, new { @class = "btn btn-warning" })
+<br />
+<br />
+@Html.ActionLink("Quay lại", "Index")

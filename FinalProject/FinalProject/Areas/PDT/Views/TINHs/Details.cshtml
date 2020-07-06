@@ -1,0 +1,35 @@
+﻿@model FinalProject.Models.TINH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Chi tiết tỉnh</h2>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <tbody>
+        <tr>
+            <th>
+                Mã tỉnh
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.MaTinh)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Tên tỉnh
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.TenTinh)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Sửa", "Edit", new { id = Model.MaTinh }, new { @class = "btn btn-warning" })
+<br />
+<br />
+@Html.ActionLink("Quay lại", "Index")

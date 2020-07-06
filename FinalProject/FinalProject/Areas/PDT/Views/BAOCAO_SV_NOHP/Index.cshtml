@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FinalProject.Models.BAOCAO_SV_NOHP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+
+}
+
+@if (ViewBag.Message != null)
+{
+    @Html.ActionLink("Quay lại", "ListHK", "BAOCAO_SV_NOHP", new { m = 0 }, new { @class = "btn btn-primary" })
+    <br />
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">
+    Danh sách nợ học phí HK
+    @Model.FirstOrDefault().HKNH.HocKy
+    (@Model.FirstOrDefault().HKNH.Nam1-
+    @Model.FirstOrDefault().HKNH.Nam2)
+</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4 card-body table-responsiv e">
+    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 col-sm-12">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        MSSV
+                    </th>
+                    <th>
+                        Họ tên
+                    </th>
+                    <th>
+                        Số tiền đăng ký
+                    </th>
+                    <th>
+                        Số tiền phải đóng
+                    </th>
+                    <th>
+                        Số tiền còn lại
+                    </th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEU_DK.MaSinhVien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEU_DK.SINHVIEN.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEU_DK.SoTienDangKy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEU_DK.SoTienPhaiDong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEU_DK.SoTienConLai)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

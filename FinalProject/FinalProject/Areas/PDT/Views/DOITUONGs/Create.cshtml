@@ -1,0 +1,51 @@
+﻿@model FinalProject.Models.DOITUONG
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Tạo mới đối tượng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Mã đối tượng</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaDoiTuong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaDoiTuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tên đối tượng</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDoiTuong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenDoiTuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Tỉ lệ giảm học phí</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TiLeGiamHocPhi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TiLeGiamHocPhi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>

@@ -11,7 +11,7 @@ namespace FinalProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class MONHOC
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +20,12 @@ namespace FinalProject.Models
             this.CT_NGANH = new HashSet<CT_NGANH>();
             this.DS_MONHOC_MO = new HashSet<DS_MONHOC_MO>();
         }
-    
+
         public string MaMonHoc { get; set; }
         public string TenMonHoc { get; set; }
         public string MaLoaiMon { get; set; }
         public Nullable<int> SoTiet { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_NGANH> CT_NGANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
