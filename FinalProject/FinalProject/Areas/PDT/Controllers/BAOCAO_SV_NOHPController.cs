@@ -96,8 +96,11 @@ namespace FinalProject.Areas.PDT.Controllers
                          };
 
             ViewBag.Message = id;
+            //var bc = baocao.Where(m => m.SoTienConLai.ToString() != "0.00");
+            //var bc = baocao.Where(m => m.SoTienConLai > 0);
             if (baocao.Count() == 0)
                 return RedirectToAction("ListHK", new { m = 1 });
+            
             return View(baocao.ToList());
         }
 
