@@ -38,5 +38,7 @@
 
 <hr />
 <div>
-    @Html.ActionLink("Quay lại", "Index")
+    @*@Html.ActionLink("Quay lại", "Index")*@
+    @Html.ActionLink("Quay lại", null, null, null, new { href = Request.UrlReferrer })
+
 </div>

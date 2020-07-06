@@ -7,7 +7,12 @@
 
 <h1 class="h3 mb-2 text-gray-800">Danh sách các tài khoản</h1>
 
+
+<!-- DataTales Example -->
 <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -38,21 +43,22 @@
                                 <th>
                                     Nhóm người dùng
                                 </th>
+                            </tr>
                         </tfoot>
 
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenDangNhap)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MatKhau)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NHOMNGUOIDUNG.TenNhomNguoiDung)
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenDangNhap)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MatKhau)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NHOMNGUOIDUNG.TenNhomNguoiDung)
+                            </td>
+                        </tr>
                         }
 
                     </table>

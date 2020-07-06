@@ -33,11 +33,13 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" />
-            <br />
-            <br />
-            @Html.ActionLink("Quay lại", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <br />
+        <br />
+        @*@Html.ActionLink("Quay lại", "Index")*@
+        @Html.ActionLink("Quay lại", null, null, null, new { href = Request.UrlReferrer })
+
+    </div>
     }
 </div>

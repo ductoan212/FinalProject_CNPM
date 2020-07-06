@@ -11,8 +11,11 @@ namespace FinalProject.Areas.Login.Controllers
     {
         private CNPMEntities db = new CNPMEntities();
         // GET: Login/Login
-        public ActionResult Login()
+        public ActionResult Login(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             return View();
         }
         public ActionResult ErrorPage()
@@ -25,7 +28,7 @@ namespace FinalProject.Areas.Login.Controllers
             var nGUOIDUNG = db.NGUOIDUNGs.Where(nd => nd.TenDangNhap == TenDangNhap & nd.MatKhau == MatKhau);
             if (nGUOIDUNG.ToList().Count() == 0)
             {
-                return View("ErrorPage");
+                return RedirectToAction("Login", "Login", new { id = 1 });
             }
             else
             {
