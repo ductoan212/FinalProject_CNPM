@@ -30,7 +30,7 @@
                                 <th>
                                     Số tiền tín chỉ
                                 </th>
-                                <th style="width:50px">
+                                <th style="width:100px">
                                     Thao tác
                                 </th>
                             </tr>
@@ -50,7 +50,7 @@
                                 <th>
                                     Số tiền tín chỉ
                                 </th>
-                                <th style="width:50px">
+                                <th >
                                     Thao tác
                                 </th>
                             </tr>
@@ -72,15 +72,7 @@
                                     @Html.DisplayFor(modelItem => item.SoTienTC)
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Thao tác
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "LOAIMONs", new { id = item.MaLoaiMon })">Sửa</a>
-                                            <a class="dropdown-item" href="@Url.Action("Delete", "LOAIMONs", new { id = item.MaLoaiMon })">Xóa</a>
-                                        </div>
-                                    </div>
+                                            <a class="btn btn-primary w-75" href="@Url.Action("Edit", "LOAIMONs", new { id = item.MaLoaiMon })">Sửa</a>
                                 </td>
                             </tr>
                         }

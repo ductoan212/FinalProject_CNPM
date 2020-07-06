@@ -11,39 +11,42 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="control-label col-md-2">Tên ngành cần thêm</div>
-            <div class="col-md-10">
-                @Html.DropDownList("MaNganh", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaNganh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-md-2">Tên môn học cần thêm</div>
-            <div class="col-md-10">
-                @Html.DropDownList("MaMonHoc", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MaMonHoc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="control-label col-md-2">Học kỳ thêm vào</div>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HocKy, new { htmlAttributes = new { @max = "8", @min="1", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HocKy, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm" class="btn btn-success" style="width: 100px" />
-            </div>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="control-label col-md-2">Tên ngành cần thêm</div>
+        <div class="col-md-10">
+            @Html.DropDownList("MaNganh", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaNganh, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Tên môn học cần thêm</div>
+        <div class="col-md-10">
+            @Html.DropDownList("MaMonHoc", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaMonHoc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Học kỳ thêm vào</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HocKy, new { htmlAttributes = new { @max = "8", @min = "1", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HocKy, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @if (ViewBag.m == "Sai")
+    {
+        <div class="alert alert-danger">Không hợp lệ !! </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-success" style="width: 100px" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

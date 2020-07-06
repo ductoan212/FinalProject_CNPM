@@ -45,16 +45,17 @@
             </tr>
         </tbody>
     </table>
-
+    @if (ViewBag.m == "Sai")
+    {
+        <div class="alert alert-danger">Không hợp lệ !! </div>
+    }
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" />
-            <br />
-            <br />
-            @Html.ActionLink("Quay lại", "Index")
+            <input type="submit" value="Xóa" class="btn btn-danger" />           
+            @Html.ActionLink("Không", "Index", null, new { @class = "btn btn-success" })
         </div>
     }
 </div>

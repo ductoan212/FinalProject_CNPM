@@ -57,19 +57,19 @@
             <div class="sidebar-heading">
                 Dịch vụ
             </div>
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Details", "SINHVIENs", new { id = ViewData["TenDangNhap"]})">Lý lịch sinh viên</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Index", "CT_NGANH", new { id = ViewData["TenDangNhap"]})">Chương trình học</a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Học phần</span>
+                   @* <i class="fas fa-fw fa-cog"></i>*@
+                    <span style="font-size:inherit">Học phần</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -80,12 +80,14 @@
                 </div>
 
             </li>
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 @Html.ActionLink("Thông tin phiếu thu", "Index", "PHIEUTHUs", new { id = ViewData["TenDangNhap"] }, new { @class = "nav-link" })
             </li>
+            <hr class="sidebar-divider">
             <li class="nav-item">
-                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline" })
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 d-inline"></i>
+                <i class="fas fa-sign-out-alt fa-sm fa-fw ml-3 text-gray-400 d-inline"></i>
+                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline pl-0" })
+
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -127,7 +129,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Quản lý đăng ký môn học và thu học phí - MN CNPM</span>
+                        <span>Quản lý đăng ký môn học và thu học phí - Nhập môn Công nghệ Phần mềm</span>
                     </div>
                 </div>
             </footer>

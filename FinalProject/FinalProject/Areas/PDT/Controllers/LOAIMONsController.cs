@@ -36,8 +36,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/LOAIMONs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             return View();
         }
 
@@ -48,14 +51,21 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaLoaiMon,TenLoaiMon,SoTietTC,SoTienTC")] LOAIMON lOAIMON)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.LOAIMONs.Add(lOAIMON);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.LOAIMONs.Add(lOAIMON);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(lOAIMON);
+                return View(lOAIMON);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "LOAIMONs", new { id = 1 });
+            }
         }
 
         // GET: PDT/LOAIMONs/Edit/5

@@ -53,8 +53,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: SINHVIENs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             //bindTinh();
             ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong");
             ViewBag.MaTinh = new SelectList(db.TINHs, "MaTinh", "TenTinh");
@@ -70,24 +73,34 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSinhVien,HoTen,GioiTinh,NgaySinh,MaHuyen,MaDoiTuong,MaNganh")] SINHVIEN sINHVIEN)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.SINHVIENs.Add(sINHVIEN);
-                db.SaveChanges();
-                ViewBag.Message = "Your application description page.";
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.SINHVIENs.Add(sINHVIEN);
+                    db.SaveChanges();
+                    ViewBag.Message = "Your application description page.";
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong", sINHVIEN.MaDoiTuong);
-            ViewBag.MaTinh = new SelectList(db.TINHs, "MaTinh", "TenTinh", sINHVIEN.TINH.MaTinh);
-            ViewBag.MaHuyen = new SelectList(db.HUYENs, "MaHuyen", "TenHuyen", sINHVIEN.MaHuyen);
-            ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", sINHVIEN.MaNganh);
-            return View(sINHVIEN);
+                ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong", sINHVIEN.MaDoiTuong);
+                ViewBag.MaTinh = new SelectList(db.TINHs, "MaTinh", "TenTinh", sINHVIEN.TINH.MaTinh);
+                ViewBag.MaHuyen = new SelectList(db.HUYENs, "MaHuyen", "TenHuyen", sINHVIEN.MaHuyen);
+                ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", sINHVIEN.MaNganh);
+                return View(sINHVIEN);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Create", "SINHVIENs", new { id = 1 });
+            }
         }
 
         // GET: SINHVIENs/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id, int ed = 0)
         {
+            ViewBag.m = "Dung";
+            if (ed == 1)
+                ViewBag.m = "Sai";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -111,17 +124,24 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaSinhVien,HoTen,GioiTinh,NgaySinh,MaHuyen,MaDoiTuong,MaNganh")] SINHVIEN sINHVIEN)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(sINHVIEN).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(sINHVIEN).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong", sINHVIEN.MaDoiTuong);
+                ViewBag.MaHuyen = new SelectList(db.HUYENs, "MaHuyen", "TenHuyen", sINHVIEN.MaHuyen);
+                ViewBag.MaTinh = new SelectList(db.TINHs, "MaTinh", "TenTinh", sINHVIEN.MaTinh);
+                ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", sINHVIEN.MaNganh);
+                return View(sINHVIEN);
             }
-            ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong", sINHVIEN.MaDoiTuong);
-            ViewBag.MaHuyen = new SelectList(db.HUYENs, "MaHuyen", "TenHuyen", sINHVIEN.MaHuyen);
-            ViewBag.MaTinh = new SelectList(db.TINHs, "MaTinh", "TenTinh", sINHVIEN.MaTinh);
-            ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", sINHVIEN.MaNganh);
-            return View(sINHVIEN);
+            catch(Exception e)
+            {
+                return RedirectToAction("Edit", "SINHVIENs", new { id = sINHVIEN.MaSinhVien, ed = 1 });
+            }
         }
 
         // GET: PDT/SINHVIENs/Delete/5

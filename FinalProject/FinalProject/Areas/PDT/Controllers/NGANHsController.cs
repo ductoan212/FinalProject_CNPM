@@ -37,8 +37,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/NGANHs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             ViewBag.MaKhoa = new SelectList(db.KHOAs, "MaKhoa", "TenKhoa");
             return View();
         }
@@ -50,15 +53,22 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaNganh,MaKhoa,TenNganh")] NGANH nGANH)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.NGANHs.Add(nGANH);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.NGANHs.Add(nGANH);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.MaKhoa = new SelectList(db.KHOAs, "MaKhoa", "TenKhoa", nGANH.MaKhoa);
-            return View(nGANH);
+                ViewBag.MaKhoa = new SelectList(db.KHOAs, "MaKhoa", "TenKhoa", nGANH.MaKhoa);
+                return View(nGANH);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "NGANHs", new { id = 1 });
+            }
         }
 
         // GET: PDT/NGANHs/Edit/5

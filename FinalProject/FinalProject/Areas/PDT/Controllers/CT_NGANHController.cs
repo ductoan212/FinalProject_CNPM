@@ -18,7 +18,7 @@ namespace FinalProject.Areas.PDT.Controllers
         public ActionResult Index(string id)
         {
             var cT_NGANH = db.CT_NGANH.Include(c => c.MONHOC).Include(c => c.NGANH).Where(n => n.MaNganh == id).OrderBy(n => n.HocKy).ToList();
-            ViewData["TenNganh"] = id;
+            ViewData["TenNganh"] = db.NGANHs.Find(id).TenNganh;
             if (cT_NGANH == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return View(cT_NGANH);
@@ -40,8 +40,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/CT_NGANH/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc");
             ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh");
             return View();
@@ -54,21 +57,31 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaNganh,MaMonHoc,HocKy")] CT_NGANH cT_NGANH)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.CT_NGANH.Add(cT_NGANH);
-                db.SaveChanges();
-                return RedirectToAction("Index", "NGANHs");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.CT_NGANH.Add(cT_NGANH);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "CT_NGANH", new { id = cT_NGANH.MaNganh});
+                }
 
-            ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc", cT_NGANH.MaMonHoc);
-            ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", cT_NGANH.NGANH.TenNganh);
-            return View(cT_NGANH);
+                ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc", cT_NGANH.MaMonHoc);
+                ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "TenNganh", cT_NGANH.NGANH.TenNganh);
+                return View(cT_NGANH);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Create", "CT_NGANH", new { id = 1 });
+            }
         }
 
         // GET: PDT/CT_NGANH/Edit/5
-        public ActionResult Edit(string MaNganh, string MaMonHoc)
+        public ActionResult Edit(string MaNganh, string MaMonHoc, int ed = 0)
         {
+            ViewBag.m = "Dung";
+            if (ed == 1)
+                ViewBag.m = "Sai";
             if (MaNganh == null || MaMonHoc == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,16 +103,23 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaNganh,MaMonHoc,HocKy")] CT_NGANH cT_NGANH)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(cT_NGANH).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", "NGANHs");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(cT_NGANH).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "CT_NGANH", new { id = cT_NGANH.MaNganh });
+                }
+                ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc", cT_NGANH.MaMonHoc);
+                ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "MaKhoa", cT_NGANH.MaNganh);
+                //return RedirectToAction("Index", new { id = cT_NGANH.MaNganh });
+                return RedirectToAction("Index", "CT_NGANH", new { id = cT_NGANH.MaNganh});
             }
-            ViewBag.MaMonHoc = new SelectList(db.MONHOCs, "MaMonHoc", "TenMonHoc", cT_NGANH.MaMonHoc);
-            ViewBag.MaNganh = new SelectList(db.NGANHs, "MaNganh", "MaKhoa", cT_NGANH.MaNganh);
-            //return RedirectToAction("Index", new { id = cT_NGANH.MaNganh });
-            return RedirectToAction("Index", "NGANHs");
+            catch (Exception e)
+            {
+                return RedirectToAction("Edit", "CT_NGANH", new { MaNganh = cT_NGANH.MaNganh, MaMonHoc = cT_NGANH.MaMonHoc, ed = 1 });
+            }
         }
 
         // GET: PDT/CT_NGANH/Delete/5
@@ -126,7 +146,7 @@ namespace FinalProject.Areas.PDT.Controllers
             db.CT_NGANH.Remove(cT_NGANH);
             db.SaveChanges();
             //return RedirectToAction("Index");
-            return RedirectToAction("Index", "NGANHs");
+            return RedirectToAction("Index", "CT_NGANH", new { id = MaNganh });
 
         }
 

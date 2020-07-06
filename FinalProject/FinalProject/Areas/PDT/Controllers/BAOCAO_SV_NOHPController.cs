@@ -87,7 +87,7 @@ namespace FinalProject.Areas.PDT.Controllers
             }
             var baocao = from p in phieu_dk
                          join h in hk_nh on p.MaHKNH equals h.MaHKNH into table1
-                         where p.MaHKNH == id
+                         where p.MaHKNH == id & p.SoTienConLai > 0
                          from h in table1.ToList()
                          select new BAOCAO_SV_NOHP
                          {
@@ -97,10 +97,11 @@ namespace FinalProject.Areas.PDT.Controllers
 
             ViewBag.Message = id;
             //var bc = baocao.Where(m => m.SoTienConLai.ToString() != "0.00");
-            //var bc = baocao.Where(m => m.SoTienConLai > 0);
+            //Nullable<decimal> x = 0;
+            //var bc = baocao.Where(m => m.SoTienConLai > x);
             if (baocao.Count() == 0)
                 return RedirectToAction("ListHK", new { m = 1 });
-            
+
             return View(baocao.ToList());
         }
 

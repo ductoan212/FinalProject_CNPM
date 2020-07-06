@@ -2070,8 +2070,6 @@
     <Content Include="Areas\PDT\Views\LOAIMONs\Index.cshtml" />
     <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Create.cshtml" />
     <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Delete.cshtml" />
-    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Details.cshtml" />
-    <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Edit.cshtml" />
     <Content Include="Areas\PDT\Views\DS_MONHOC_MO\Index.cshtml" />
     <Content Include="Areas\PDT\Views\DS_MONHOC_MO\ListHK.cshtml" />
     <Content Include="Areas\PDT\Views\DS_MONHOC_MO\List.cshtml" />

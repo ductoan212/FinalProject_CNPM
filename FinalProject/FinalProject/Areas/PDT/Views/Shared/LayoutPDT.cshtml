@@ -56,14 +56,14 @@
             <div class="sidebar-heading">
                 Dịch vụ
             </div>
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Index", "SINHVIENs", new { area = "PDT" })">Danh sách sinh viên</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Chương trình học</span>
+                    @*<i class="fas fa-fw fa-cog"></i>*@
+                    <span style="font-size:inherit">Chương trình học</span>
                 </a>
 
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -76,10 +76,10 @@
             </li>
 
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-book"></i>
-                    <span>Môn học mở</span>
+                    @*<i class="fas fa-book"></i>*@
+                    <span style="font-size:inherit">Môn học mở</spanstyle="font-size:inherit">
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -91,20 +91,23 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Index", "PHIEU_DK", new { area = "PDT" })">Đăng ký môn học</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Index", "PHIEUTHUs", new { area = "PDT" })">Danh sách phiếu thu</a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 @Html.ActionLink("Báo cáo nợ học phí", "ListHK", "BAOCAO_SV_NOHP", new { area = "PDT" }, new { @class = "nav-link" })
             </li>
-            <li class="nav-item">
-                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline" })
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 d-inline"></i>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item ">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw ml-3 text-gray-400 d-inline"></i>
+                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline pl-0" })
+                
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -146,7 +149,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Nhập môn Công nghệ Phần mềm - Quản lý đăng ký môn học và thu học phí</span>
+                        <span>Quản lý đăng ký môn học và thu học phí - Nhập môn Công nghệ Phần mềm</span>
                     </div>
                 </div>
             </footer>

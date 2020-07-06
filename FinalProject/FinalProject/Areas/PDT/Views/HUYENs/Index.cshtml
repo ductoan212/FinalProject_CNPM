@@ -21,6 +21,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    Mã Huyện
+                                </th>
+                                <th>
                                     Huyện
                                 </th>
                                 <th>
@@ -38,6 +41,9 @@
                         <tfoot>
                             <tr>
                                 <th>
+                                    Mã Huyện
+                                </th>
+                                <th>
                                     Huyện
                                 </th>
                                 <th>
@@ -54,36 +60,39 @@
 
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenHuyen)
-                                </td>
-                                <td>
-                                    @if (item.UuTien == true)
-                                    {
-                                        <p>Có</p>
-                                    }
-                                    else
-                                    {
-                                        <p>Không</p>
-                                    }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TINH.TenTinh)
-                                </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Thao tác
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="@Url.Action("Details", "HUYENs", new { id = item.MaHuyen })">Chi tiết</a>
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "HUYENs", new { id = item.MaHuyen })">Sửa</a>
-                                            <a class="dropdown-item" href="@Url.Action("Delete", "HUYENs", new { id = item.MaHuyen })">Xóa</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaHuyen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenHuyen)
+                        </td>
+                        <td>
+                            @if (item.UuTien == true)
+                            {
+                                <p>Có</p>
+                            }
+                            else
+                            {
+                                <p>Không</p>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TINH.TenTinh)
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Thao tác
+                                </button>
+                                <div class="dropdown-menu">
+                                    @*                                                <a class="dropdown-item" href="@Url.Action("Details", "HUYENs", new { id = item.MaHuyen })">Chi tiết</a>
+                                    *@                                            <a class="dropdown-item" href="@Url.Action("Edit", "HUYENs", new { id = item.MaHuyen })">Sửa</a>
+                                    <a class="dropdown-item" href="@Url.Action("Delete", "HUYENs", new { id = item.MaHuyen })">Xóa</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                         }
 
                     </table>

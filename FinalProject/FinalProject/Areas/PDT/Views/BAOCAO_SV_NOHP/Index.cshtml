@@ -6,11 +6,7 @@
 
 }
 
-@if (ViewBag.Message != null)
-{
-    @Html.ActionLink("Quay lại", "ListHK", "BAOCAO_SV_NOHP", new { m = 0 }, new { @class = "btn btn-primary" })
-    <br />
-}
+
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">
@@ -65,5 +61,12 @@
                 </tr>
             }
         </table>
+
     </div>
+
 </div>
+@if (ViewBag.Message != null)
+{
+    @Html.ActionLink("Quay lại", "ListHK", "BAOCAO_SV_NOHP", new { m = 0 }, new { @class = "btn btn-link" })
+    <br />
+}

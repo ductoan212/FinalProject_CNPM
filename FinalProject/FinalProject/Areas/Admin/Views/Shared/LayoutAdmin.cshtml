@@ -59,12 +59,14 @@
                 Dịch vụ
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item btn btn-outline-info p-0">
                 <a class="nav-link" href="@Url.Action("Index", "NGUOIDUNGs", new { area = "Admin" })">Danh sách tài khoản</a>
             </li>
+            <hr class="sidebar-divider">
             <li class="nav-item">
-                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline" })
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400 d-inline"></i>
+                <i class="fas fa-sign-out-alt fa-sm fa-fw ml-3 text-gray-400 d-inline"></i>
+                @Html.ActionLink("Đăng xuất", "Login", "Login", new { area = "Login" }, new { @class = "nav-link d-inline pl-0" })
+
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -199,7 +201,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Quản lý đăng ký môn học và thu học phí - MN CNPM</span>
+                        <span>Quản lý đăng ký môn học và thu học phí - Nhập môn Công nghệ Phần mềm</span>
                     </div>
                 </div>
             </footer>

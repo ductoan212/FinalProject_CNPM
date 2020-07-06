@@ -41,8 +41,11 @@ namespace FinalProject.Areas.SinhVien.Controllers
         }
 
         // GET: PHIEU_DK/Create
-        public ActionResult Create(string id_sv = "0001")
+        public ActionResult Create(string id_sv = "0001", int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             TenDangNhap = id_sv;
             ViewData["TenDangNhap"] = id_sv;
             ViewBag.MaSinhVien = db.SINHVIENs.Find(id_sv); //Tìm sv có id = id_sv
@@ -74,16 +77,23 @@ namespace FinalProject.Areas.SinhVien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SoPhieuDK,MaSinhVien,NgayDK,MaHKNH,SoTienDangKy,SoTienPhaiDong,SoTienDaDong,SoTienConLai")] PHIEU_DK pHIEU_DK)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.PHIEU_DK.Add(pHIEU_DK);
-                db.SaveChanges();
-                return RedirectToAction("Create", "CT_PHIEUDK", new { @id = pHIEU_DK.SoPhieuDK, @hknh = pHIEU_DK.MaHKNH, @id_sv = pHIEU_DK.MaSinhVien });
-            }
+                if (ModelState.IsValid)
+                {
+                    db.PHIEU_DK.Add(pHIEU_DK);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "CT_PHIEUDK", new { @id = pHIEU_DK.SoPhieuDK, @hknh = pHIEU_DK.MaHKNH, @id_sv = pHIEU_DK.MaSinhVien });
+                }
 
-            ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy", pHIEU_DK.MaHKNH);
-            ViewBag.MaSinhVien = new SelectList(db.SINHVIENs, "MaSinhVien", "HoTen", pHIEU_DK.MaSinhVien);
-            return View(pHIEU_DK);
+                ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy", pHIEU_DK.MaHKNH);
+                ViewBag.MaSinhVien = new SelectList(db.SINHVIENs, "MaSinhVien", "HoTen", pHIEU_DK.MaSinhVien);
+                return View(pHIEU_DK);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "PHIEU_DK", new { id_sv = pHIEU_DK.MaSinhVien, id = 1 });
+            }
         }
 
         protected override void Dispose(bool disposing)

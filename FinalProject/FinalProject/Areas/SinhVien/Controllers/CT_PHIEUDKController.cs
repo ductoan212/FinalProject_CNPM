@@ -132,8 +132,11 @@ namespace FinalProject.Areas.SinhVien.Controllers
         }
 
         // GET: CT_PHIEUDK/Delete/5
-        public ActionResult Delete(string id_pdk, string id_mo)
+        public ActionResult Delete(string id_pdk, string id_mo, int dd = 0)
         {
+            ViewBag.m = "Dung";
+            if (dd == 1)
+                ViewBag.m = "Sai";
             if (id_pdk == null || id_mo == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -151,10 +154,17 @@ namespace FinalProject.Areas.SinhVien.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id_pdk, string id_mo)
         {
-            CT_PHIEUDK cT_PHIEUDK = db.CT_PHIEUDK.Where(m => m.SoPhieuDK == id_pdk).Where(m => m.MaMo == id_mo).FirstOrDefault();
-            db.CT_PHIEUDK.Remove(cT_PHIEUDK);
-            db.SaveChanges();
-            return RedirectToAction("Details", "PHIEU_DK", new { @id = id_pdk });
+            try
+            {
+                CT_PHIEUDK cT_PHIEUDK = db.CT_PHIEUDK.Where(m => m.SoPhieuDK == id_pdk).Where(m => m.MaMo == id_mo).FirstOrDefault();
+                db.CT_PHIEUDK.Remove(cT_PHIEUDK);
+                db.SaveChanges();
+                return RedirectToAction("Details", "PHIEU_DK", new { @id = id_pdk });
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Delete", "CT_PHIEUDK", new { id_pdk = id_pdk, id_mo = id_mo, dd = 1 });
+            }
         }
 
         protected override void Dispose(bool disposing)

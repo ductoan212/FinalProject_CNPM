@@ -37,8 +37,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/MONHOCs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             ViewBag.MaLoaiMon = new SelectList(db.LOAIMONs, "MaLoaiMon", "TenLoaiMon");
             return View();
         }
@@ -50,15 +53,22 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaMonHoc,TenMonHoc,MaLoaiMon,SoTiet")] MONHOC mONHOC)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.MONHOCs.Add(mONHOC);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.MONHOCs.Add(mONHOC);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.MaLoaiMon = new SelectList(db.LOAIMONs, "MaLoaiMon", "TenLoaiMon", mONHOC.MaLoaiMon);
-            return View(mONHOC);
+                ViewBag.MaLoaiMon = new SelectList(db.LOAIMONs, "MaLoaiMon", "TenLoaiMon", mONHOC.MaLoaiMon);
+                return View(mONHOC);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "MONHOCs", new { id = 1 });
+            }
         }
 
         // GET: PDT/MONHOCs/Edit/5

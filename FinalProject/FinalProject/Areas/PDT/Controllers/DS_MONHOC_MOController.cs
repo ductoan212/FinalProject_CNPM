@@ -202,8 +202,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: DS_MONHOC_MO/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id, int ed = 0)
         {
+            ViewBag.m = "Dung";
+            if (ed == 1)
+                ViewBag.m = "Sai";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -221,11 +224,19 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DS_MONHOC_MO dS_MONHOC_MO = db.DS_MONHOC_MO.Find(id);
-            string hknh = dS_MONHOC_MO.MaHKNH.ToString();
-            db.DS_MONHOC_MO.Remove(dS_MONHOC_MO);
-            db.SaveChanges();
-            return RedirectToAction("Index", new { id = hknh });
+            try
+            {
+                DS_MONHOC_MO dS_MONHOC_MO = db.DS_MONHOC_MO.Find(id);
+                string hknh = dS_MONHOC_MO.MaHKNH.ToString();
+                db.DS_MONHOC_MO.Remove(dS_MONHOC_MO);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = hknh });
+            }
+            catch (Exception e)
+            {
+                DS_MONHOC_MO dS_MONHOC_MO = db.DS_MONHOC_MO.Find(id);
+                return RedirectToAction("Delete", "DS_MONHOC_MO", new { id = dS_MONHOC_MO.MaMo, ed = 1 });
+            }
         }
 
         protected override void Dispose(bool disposing)

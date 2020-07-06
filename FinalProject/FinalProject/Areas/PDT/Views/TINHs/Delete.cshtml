@@ -28,7 +28,10 @@
             </tr>
         </tbody>
     </table>
-
+    @if (ViewBag.m == "Sai")
+    {
+        <div class="alert alert-danger">Không hợp lệ !! </div>
+    }
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

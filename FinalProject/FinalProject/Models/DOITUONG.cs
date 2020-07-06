@@ -28,6 +28,7 @@ namespace FinalProject.Models
         public string TenDoiTuong { get; set; }
 
         [Required(ErrorMessage = "Cần nhập tỉ lệ giảm học phí")]
+        [Range(1, 100, ErrorMessage = "Tỉ lệ không hợp lệ")]
         public Nullable<int> TiLeGiamHocPhi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

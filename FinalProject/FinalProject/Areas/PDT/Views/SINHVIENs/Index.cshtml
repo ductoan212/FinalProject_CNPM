@@ -48,7 +48,7 @@
                                 <th>
                                     Ngành
                                 </th>
-                                <th style="width:50px">
+                                <th style="width:100px">
                                     Thao tác
                                 </th>
                             </tr>
@@ -108,16 +108,7 @@
                                     @Html.DisplayFor(modelItem => item.NGANH.TenNganh)
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Thao tác
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="@Url.Action("Details", "SINHVIENs", new { id = item.MaSinhVien })">Chi tiết</a>
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "SINHVIENs", new { id = item.MaSinhVien })">Sửa</a>
-                                            <a class="dropdown-item" href="@Url.Action("Delete", "SINHVIENs", new { id = item.MaSinhVien })">Xóa</a>
-                                        </div>
-                                    </div>
+                                            <a class="btn btn-outline-primary w-75" href="@Url.Action("Edit", "SINHVIENs", new { id = item.MaSinhVien })">Sửa</a>
                                 </td>
                             </tr>
                         }

@@ -39,8 +39,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/PHIEU_DK/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             ViewBag.MaSinhVien = new SelectList(db.SINHVIENs, "MaSinhVien", "MaSinhVien"); //Lấy hết sv
 
             ViewBag.hknh = db.HKNHs; //Lấy hết học kỳ năm học
@@ -68,16 +71,23 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SoPhieuDK,MaSinhVien,NgayDK,MaHKNH,SoTienDangKy,SoTienPhaiDong,SoTienDaDong,SoTienConLai")] PHIEU_DK pHIEU_DK)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.PHIEU_DK.Add(pHIEU_DK);
-                db.SaveChanges();
-                return RedirectToAction("Create", "CT_PHIEUDK", new { @id = pHIEU_DK.SoPhieuDK, @hknh = pHIEU_DK.MaHKNH });
-            }
+                if (ModelState.IsValid)
+                {
+                    db.PHIEU_DK.Add(pHIEU_DK);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", "CT_PHIEUDK", new { @id = pHIEU_DK.SoPhieuDK, @hknh = pHIEU_DK.MaHKNH });
+                }
 
-            ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy", pHIEU_DK.MaHKNH);
-            ViewBag.MaSinhVien = new SelectList(db.SINHVIENs, "MaSinhVien", "HoTen", pHIEU_DK.MaSinhVien);
-            return View(pHIEU_DK);
+                ViewBag.MaHKNH = new SelectList(db.HKNHs, "MaHKNH", "HocKy", pHIEU_DK.MaHKNH);
+                ViewBag.MaSinhVien = new SelectList(db.SINHVIENs, "MaSinhVien", "HoTen", pHIEU_DK.MaSinhVien);
+                return View(pHIEU_DK);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "PHIEU_DK", new { id = 1 });
+            }
         }
 
         protected override void Dispose(bool disposing)

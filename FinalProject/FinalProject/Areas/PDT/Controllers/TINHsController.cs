@@ -36,8 +36,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/TINHs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             return View();
         }
 
@@ -48,14 +51,21 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaTinh,TenTinh")] TINH tINH)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.TINHs.Add(tINH);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.TINHs.Add(tINH);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(tINH);
+                return View(tINH);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "TINHs", new { id = 1 });
+            }
         }
 
         // GET: PDT/TINHs/Edit/5
@@ -90,8 +100,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/TINHs/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id, int ed = 0)
         {
+            ViewBag.m = "Dung";
+            if (ed == 1)
+                ViewBag.m = "Sai";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,10 +122,17 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            TINH tINH = db.TINHs.Find(id);
-            db.TINHs.Remove(tINH);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                TINH tINH = db.TINHs.Find(id);
+                db.TINHs.Remove(tINH);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Delete", "TINHs", new { id = id, ed = 1 });
+            }
         }
 
         protected override void Dispose(bool disposing)

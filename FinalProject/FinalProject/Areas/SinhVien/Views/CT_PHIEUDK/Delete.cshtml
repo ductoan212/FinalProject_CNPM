@@ -25,7 +25,10 @@
         </td>
     </tr>
 </table>
-
+@if (ViewBag.m == "Sai")
+{
+    <div class="alert alert-danger">Không hợp lệ !! </div>
+}
 <div>
     @using (Html.BeginForm())
     {

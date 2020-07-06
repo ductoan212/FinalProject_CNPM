@@ -36,8 +36,11 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/HKNHs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             return View();
         }
 
@@ -48,14 +51,21 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaHKNH,HocKy,Nam1,Nam2,HanDongHocPhi")] HKNH hKNH)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.HKNHs.Add(hKNH);
-                db.SaveChanges();
-                return RedirectToAction("ListHK", "DS_MONHOC_MO");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.HKNHs.Add(hKNH);
+                    db.SaveChanges();
+                    return RedirectToAction("ListHK", "DS_MONHOC_MO");
+                }
 
-            return View(hKNH);
+                return View(hKNH);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "HKNHs", new { id = 1 });
+            }
         }
 
         // GET: PDT/HKNHs/Edit/5

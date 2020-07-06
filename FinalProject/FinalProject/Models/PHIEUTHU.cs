@@ -20,6 +20,7 @@ namespace FinalProject.Models
         [DataType(DataType.Date)] //Hỗ trợ nhập kiểu ngày
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)] //Dùng để hiển thị
         public Nullable<System.DateTime> NgayLap { get; set; }
+        [Required(ErrorMessage = "Cần nhập số tiền thu")]
         public Nullable<decimal> SoTienThu { get; set; }
 
         public virtual PHIEU_DK PHIEU_DK { get; set; }

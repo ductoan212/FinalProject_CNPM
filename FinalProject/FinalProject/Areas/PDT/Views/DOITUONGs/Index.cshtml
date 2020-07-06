@@ -45,7 +45,7 @@
                                 <th>
                                     Tỉ lệ giảm học phí (%)
                                 </th>
-                                <th style="width:50px">
+                                <th style="width:100px">
                                     Thao tác
                                 </th>
                             </tr>
@@ -64,15 +64,7 @@
                                     @Html.DisplayFor(modelItem => item.TiLeGiamHocPhi)
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Thao tác
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "DOITUONGs", new { id = item.MaDoiTuong })">Sửa</a>
-                                            <a class="dropdown-item" href="@Url.Action("Delete", "DOITUONGs", new { id = item.MaDoiTuong })">Xóa</a>
-                                        </div>
-                                    </div>
+                                            <a class="btn btn-primary" href="@Url.Action("Edit", "DOITUONGs", new { id = item.MaDoiTuong })">Sửa</a>
                                 </td>
                             </tr>
                         }

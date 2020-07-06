@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using FinalProject.Models;
@@ -37,13 +38,15 @@ namespace FinalProject.Areas.PDT.Controllers
         }
 
         // GET: PDT/PHIEUTHUs/Create
-        public ActionResult Create(int id = 0)
+        public ActionResult Create(int id = 0, string id_pt = "")
         {
             ViewBag.m = "dung";
             if (id == 1)
                 ViewBag.m = "Sai";
             ViewBag.SoPhieuDK = new SelectList(db.PHIEU_DK, "SoPhieuDK", "SoPhieuDK");
-
+            ViewBag.conlai = "";
+            if(id_pt != "")
+                ViewBag.conlai = db.PHIEU_DK.Find(id_pt).SoTienConLai.ToString();
             //Tạo id phiếu thu tăng dần
             int id_num = 1000;
             if (db.PHIEUTHUs.Count() != 0)
@@ -56,6 +59,7 @@ namespace FinalProject.Areas.PDT.Controllers
             PHIEUTHU model = new PHIEUTHU(); //Tạo mới phiếu đk
             model.SoPhieuThu = ViewBag.id_phieu; //Tạo id tự tăng cho phiếu đk
             model.NgayLap = DateTime.Now; //Gán ngày đk
+            model.SoTienThu = 0;
             ViewBag.NgayLap = model.NgayLap;
             return View(model);
         }
@@ -81,7 +85,12 @@ namespace FinalProject.Areas.PDT.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction("Create", "PHIEUTHUs", new { id = 1 });
+                string id_pt = pHIEUTHU.SoPhieuDK;
+                string con_lai = db.PHIEU_DK.Find(id_pt).SoTienConLai.ToString();
+                int cl;
+                Int32.TryParse(con_lai, out cl);
+
+                return RedirectToAction("Create", "PHIEUTHUs", new { id = 1, id_pt = id_pt });
             }
 
         }
@@ -127,7 +136,7 @@ namespace FinalProject.Areas.PDT.Controllers
             }
             catch (Exception e)
             {
-                return RedirectToAction("Edit", "PHIEUTHUs", new { id = pHIEUTHU.SoPhieuThu, ed = 1 });
+                return RedirectToAction("Edit", "PHIEUTHUs", new { id = pHIEUTHU.SoPhieuThu, ed = 1});
             }
         }
 
