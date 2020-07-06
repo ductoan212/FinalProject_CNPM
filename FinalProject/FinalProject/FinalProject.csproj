@@ -150,6 +150,11 @@
     <Compile Include="Areas\PDT\Controllers\SINHVIENsController.cs" />
     <Compile Include="Areas\PDT\Controllers\TINHsController.cs" />
     <Compile Include="Areas\PDT\PDTAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\CT_PHIEUDKController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\PHIEUTHUsController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\PHIEU_DKController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\SinhVienController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\SINHVIENsController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2110,6 +2115,17 @@
     <Content Include="Areas\Admin\Views\NGUOIDUNGs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NGUOIDUNGs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NGUOIDUNGs\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\Shared\LayoutSinhVien.cshtml" />
+    <Content Include="Areas\SinhVien\Views\SinhVien\HomeSinhVien.cshtml" />
+    <Content Include="Areas\SinhVien\Views\SINHVIENs\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\SINHVIENs\Edit.cshtml" />
+    <Content Include="Areas\SinhVien\Views\PHIEU_DK\Create.cshtml" />
+    <Content Include="Areas\SinhVien\Views\PHIEU_DK\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\PHIEU_DK\IndexSV.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CT_PHIEUDK\Create.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CT_PHIEUDK\Delete.cshtml" />
+    <Content Include="Areas\SinhVien\Views\PHIEUTHUs\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\PHIEUTHUs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2141,9 +2157,7 @@
     <Folder Include="Areas\Login\Data\" />
     <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Areas\PDT\Data\" />
-    <Folder Include="Areas\SinhVien\Controllers\" />
     <Folder Include="Areas\SinhVien\Data\" />
-    <Folder Include="Areas\SinhVien\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

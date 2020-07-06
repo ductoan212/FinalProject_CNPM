@@ -515,7 +515,11 @@ pre {
 }
 
 .container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
     padding-right: .75rem;
     padding-left: .75rem;
     margin-right: auto;
@@ -9790,9 +9794,10 @@ a:focus {
 }
 
 .bg-gradient-primary {
+    height: 100vh;
     background-color: #4e73df;
     background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
-    background-size: cover
+    background-size: cover;
 }
 
 .bg-gradient-secondary {
@@ -10722,7 +10727,7 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(https://www.adelaide.edu.au/newsroom/sites/default/files/styles/ua_image/public/media/images/2019-09/24225_UoA1-web_2.jpg?itok=Vzosh3W5);
+    background: url(https://images1.content-gbl.com/commimg/video/CH/myhc_279666.jpg);
     background-position: center;
     background-size: cover
 }

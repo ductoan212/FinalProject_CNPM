@@ -1,0 +1,121 @@
+﻿@model IEnumerable<FinalProject.Models.PHIEU_DK>
+
+@{
+    ViewBag.Title = "IndexSV";
+    Layout = "~/Areas/SinhVien/Views/Shared/LayoutSinhVien.cshtml";
+}
+
+<h2>Danh sách Đã đăng ký</h2>
+
+<!-- DataTales -->
+<div class="card shadow mb-4">
+    @*<div class="card-header py-3">
+            @Html.ActionLink("ĐKHP", "Create", "PHIEU_DK", new { @class = "btn btn-success" })
+        </div>*@
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Số phiếu
+                                </th>
+                                <th>
+                                    Học kỳ
+                                </th>
+                                <th>
+                                    MSSV
+                                </th>
+                                <th>
+                                    Ngày đăng ký
+                                </th>
+                                <th>
+                                    Tiền đăng ký
+                                </th>
+                                <th>
+                                    Phải đóng
+                                </th>
+                                <th>
+                                    Đã đóng
+                                </th>
+                                <th>
+                                    Còn lại
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Số phiếu
+                                </th>
+                                <th>
+                                    Học kỳ
+                                </th>
+                                <th>
+                                    MSSV
+                                </th>
+                                <th>
+                                    Ngày đăng ký
+                                </th>
+                                <th>
+                                    Tiền đăng ký
+                                </th>
+                                <th>
+                                    Phải đóng
+                                </th>
+                                <th>
+                                    Đã đóng
+                                </th>
+                                <th>
+                                    Còn lại
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoPhieuDK)
+                                </td>
+                                <td>
+                                    HK @Html.DisplayFor(modelItem => item.HKNH.HocKy) (@Html.DisplayFor(modelItem => item.HKNH.Nam1)-@Html.DisplayFor(modelItem => item.HKNH.Nam2))
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaSinhVien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayDK)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTienDangKy)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTienPhaiDong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTienDaDong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTienConLai)
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" href="@Url.Action("Details", "PHIEU_DK", new { id = item.SoPhieuDK })">Chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

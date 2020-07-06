@@ -1,0 +1,67 @@
+﻿@model FinalProject.Models.PHIEU_DK
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/SinhVien/Views/Shared/LayoutSinhVien.cshtml";
+}
+
+<h2>Tạo Phiếu đăng ký</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Số phiếu</div>
+            <div class="col-md-10">
+                <div class="form-control">@ViewBag.id_phieu</div>
+                @Html.HiddenFor(m => m.SoPhieuDK)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Sinh viên</div>
+            <div class="col-md-10">
+                @*@Html.DropDownList("MaSinhVien", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaSinhVien, "", new { @class = "text-danger" })*@
+                <div class="form-control">@ViewBag.MaSinhVien.HoTen</div>
+                @Html.HiddenFor(m => m.MaSinhVien)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Ngày đăng ký</div>
+            <div class="col-md-10">
+                <div class="form-control">@ViewBag.NgayDK</div>
+                @Html.HiddenFor(m => m.NgayDK)
+
+                @*@Html.EditorFor(model => model.NgayDK, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgayDK, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Chọn học kỳ, năm học</div>
+            <div class="col-md-10">
+                <select id="MaHKNH" name="MaHKNH" class="form-control">
+                    @foreach (var item in ViewBag.hknh)
+                    {
+                        <option value="@item.MaHKNH">HK @item.HocKy (@item.Nam1-@item.Nam2)</option>
+                    }
+                </select>
+                @*@Html.DropDownList("MaHKNH", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.MaHKNH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng ký" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Quay lại", "IndexSV", "PHIEU_DK", new { id = ViewData["TenDangNhap"] }, new { })

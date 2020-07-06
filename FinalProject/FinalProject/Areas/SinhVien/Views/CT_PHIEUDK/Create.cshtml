@@ -1,0 +1,77 @@
+﻿@model FinalProject.Models.CT_PHIEUDK
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/SinhVien/Views/Shared/LayoutSinhVien.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+        $('#checkBoxAll').click(function () {
+            if ($(this).is(":checked")) {
+                $(".chkCheckBoxId").prop("checked", true)
+            }
+            else {
+                $(".chkCheckBoxId").prop("checked", false)
+            }
+        });
+    });
+</script>
+
+
+<h2>Chọn môn học</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Số phiếu ĐK</div>
+            <div class="col-md-10">
+                <div class="form-control">@ViewBag.SoPhieuDK</div>
+                @*@Html.HiddenFor( model => model.SoPhieuDK)*@
+                @*@Html.EditorFor(m => m.SoPhieuDK, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.SoPhieuDK, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <table id="dataTable" name="ID" class="table table-bordered bg-white" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th style="width:25px"><input type="checkbox" id="checkBoxAll" class="custom-checkbox" /></th>
+                            <th>Tên môn học</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.ListCT)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="ID" value="@item.MaMo" class="custom-checkbox chkCheckBoxId" />
+                                </td>
+                                <td>@item.DS_MONHOC_MO.MONHOC.TenMonHoc</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.ValidationMessageFor(model => model.MaMo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng ký" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Quay lại", "Details", "PHIEU_DK", new { @id = ViewBag.SoPhieuDK }, new { @class = "btn btn-link" })
