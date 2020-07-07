@@ -1,0 +1,43 @@
+﻿@model FinalProject.Models.LOAIMON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LOAIMON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoaiMon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiMon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTietTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTietTC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTienTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTienTC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiMon }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

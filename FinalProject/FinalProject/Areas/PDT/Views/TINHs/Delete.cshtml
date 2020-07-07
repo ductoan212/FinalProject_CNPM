@@ -1,0 +1,46 @@
+﻿@model FinalProject.Models.TINH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h3>Bạn có muốn xóa Huyện này không?</h3>
+<div>
+    <table class="table table-bordered" width="100%" cellspacing="0">
+        <tbody>
+            <tr>
+                <th>
+                    Mã tỉnh
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.MaTinh)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    Tên tỉnh
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.TenTinh)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @if (ViewBag.m == "Sai")
+    {
+        <div class="alert alert-danger">Không hợp lệ !! </div>
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <br />
+            <br />
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

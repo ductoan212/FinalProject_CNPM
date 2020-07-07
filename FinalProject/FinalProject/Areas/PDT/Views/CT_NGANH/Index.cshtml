@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FinalProject.Models.CT_NGANH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Chi tiết chương trình học ngành @ViewData["TenNganh"]</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm môn học vào chương trình học", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Môn học
+                                </th>
+                                <th>
+                                    Học kỳ
+                                </th>
+                                <th width="200px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Môn học
+                                </th>
+                                <th>
+                                    Học kỳ
+                                </th>
+                                <th width="200px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MONHOC.TenMonHoc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HocKy)
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Thao tác
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Edit", "CT_NGANH", new { MaNganh = item.MaNganh, MaMonHoc = item.MaMonHoc })">Sửa</a>
+                                            <a class="dropdown-item" href="@Url.Action("Delete", "CT_NGANH", new { MaNganh = item.MaNganh, MaMonHoc = item.MaMonHoc })">Xóa</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Quay lại", "Index", "NGANHs",null, new { @class = "btn btn-link" })

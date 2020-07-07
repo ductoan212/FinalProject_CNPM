@@ -1,0 +1,53 @@
+﻿@model FinalProject.Models.HUYEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Chi tiết Huyện</h2>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+
+    <tbody>
+        <tr>
+            <th>Mã huyện</th>
+            <td>
+                @Html.DisplayFor(model => model.MaHuyen)
+            </td>
+        </tr>
+
+        <tr>
+            <th>Tên huyện</th>
+            <td>
+                @Html.DisplayFor(model => model.TenHuyen)
+            </td>
+        </tr>
+
+        <tr>
+            <th>Ưu tiên</th>
+            <td>
+                @if (@Model.UuTien == true)
+                {
+                    <span>Có</span>
+                }
+                else
+                {
+                    <span>Không</span>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>Tên tỉnh</th>
+            <td>
+                @Html.DisplayFor(model => model.TINH.TenTinh)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Sửa", "Edit", new { id = Model.MaHuyen }, new { @class = "btn btn-warning" })
+<br />
+<br />
+@Html.ActionLink("Quay lại", "Index")

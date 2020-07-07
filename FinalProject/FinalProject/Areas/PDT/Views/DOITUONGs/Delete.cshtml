@@ -1,0 +1,50 @@
+﻿@model FinalProject.Models.DOITUONG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h3>Bạn có muốn xóa Đối tượng này không?</h3>
+<div>
+    <table class="table table-bordered" width="100%" cellspacing="0">
+        <tr>
+            <th>
+                Mã đối tượng
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.MaDoiTuong)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Tên đối tượng
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.TenDoiTuong)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Tỉ lệ giảm học phí
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.TiLeGiamHocPhi)%
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <br />
+            <br />
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

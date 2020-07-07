@@ -1,0 +1,90 @@
+﻿@model IEnumerable<FinalProject.Models.MONHOC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Danh sách Môn học</h1>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Quản lý loại môn", "Index", "LOAIMONs", null, new { @class = "btn btn-secondary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã môn học
+                                </th>
+                                <th>
+                                    Tên môn học
+                                </th>
+                                <th>
+                                    Loại môn
+                                </th>
+                                <th>
+                                    Số tiết
+                                </th>
+                                <th style="width:100px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Mã môn học
+                                </th>
+                                <th>
+                                    Tên môn học
+                                </th>
+                                <th>
+                                    Loại môn
+                                </th>
+                                <th>
+                                    Số tiết
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaMonHoc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenMonHoc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LOAIMON.TenLoaiMon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTiet)
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary w-75" href="@Url.Action("Edit", "MONHOCs", new { id = item.MaMonHoc })">Sửa</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

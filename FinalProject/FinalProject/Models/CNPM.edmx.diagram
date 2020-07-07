@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0af8cf17d7b1428dbce9556a6347936a" Name="Diagram1">
+        <EntityTypeShape EntityType="CNPMModel.BAOCAO_SV_NOHP" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.CT_NGANH" Width="1.5" PointX="13.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.CT_PHIEUDK" Width="1.5" PointX="12.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.DOITUONG" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.DS_MONHOC_MO" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.HKNH" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.HUYEN" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.KHOA" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.LOAIMON" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.MONHOC" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.NGANH" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.NGUOIDUNG" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.NHOMNGUOIDUNG" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.PHIEU_DK" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.PHIEUTHU" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.SINHVIEN" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.TINH" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="CNPMModel.FK_SVNOHP_HKNH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_SVNOHP_SV" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_CT_MH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_CT_NG" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_CT_DS" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_CT_PDK" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_SV_DT" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_DS_HKNH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_DS_MH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_PDK_HKNH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_HUYEN_TINH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_SV_HUYEN" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_NGANH_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_MONHOC_LMH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_SV_NGANH" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_ND_NND" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_PDK_SV" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPMModel.FK_PT_DK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

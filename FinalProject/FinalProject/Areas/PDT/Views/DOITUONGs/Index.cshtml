@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FinalProject.Models.DOITUONG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">Danh sách Đối tượng</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã đối tượng
+                                </th>
+                                <th>
+                                    Tên đối tượng
+                                </th>
+                                <th>
+                                    Tỉ lệ giảm học phí (%)
+                                </th>
+                                <th style="width:50px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Mã đối tượng
+                                </th>
+                                <th>
+                                    Tên đối tượng
+                                </th>
+                                <th>
+                                    Tỉ lệ giảm học phí (%)
+                                </th>
+                                <th style="width:100px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaDoiTuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDoiTuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TiLeGiamHocPhi)
+                                </td>
+                                <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Edit", "DOITUONGs", new { id = item.MaDoiTuong })">Sửa</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+            @Html.ActionLink("Quay lại DS sinh viên", "Index", "SINHVIENs", null, new { @class = "btn btn-link" })
+        </div>
+    </div>
+</div>

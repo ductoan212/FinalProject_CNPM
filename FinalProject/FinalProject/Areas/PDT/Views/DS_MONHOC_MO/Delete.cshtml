@@ -1,0 +1,40 @@
+﻿@model FinalProject.Models.DS_MONHOC_MO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Bạn chắc chắn muốn xóa môn học này ?</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Học kỳ
+        </th>
+        <td>
+            HK @Html.DisplayFor(model => model.HKNH.HocKy) (@Html.DisplayFor(model => model.HKNH.Nam1)-@Html.DisplayFor(model => model.HKNH.Nam2))
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Môn học
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.MONHOC.TenMonHoc)
+        </td>
+    </tr>
+</table>
+    @if (ViewBag.m == "Sai")
+    {
+        <div class="alert alert-danger">Không hợp lệ !! </div>
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            @Html.ActionLink("Không", "Index", new { id = Model.MaHKNH }, new { @class = "btn btn-success" })
+        </div>
+    }

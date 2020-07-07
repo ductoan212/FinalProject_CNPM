@@ -1,0 +1,45 @@
+﻿@model FinalProject.Models.MONHOC
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h3>Bạn có muốn xóa môn học này không?</h3>
+<div>
+    <table class="table table-bordered" width="100%" cellspacing="0">
+        <tbody>
+            <tr>
+                <th>Mã môn học</th>
+                <td>@Html.DisplayFor(model => model.MaMonHoc)</td>
+            </tr>
+
+            <tr>
+                <th>Tên môn học</th>
+                <td>@Html.DisplayFor(model => model.TenMonHoc)</td>
+            </tr>
+
+            <tr>
+                <th>Loại môn</th>
+                <td>@Html.DisplayFor(model => model.LOAIMON.TenLoaiMon)</td>
+            </tr>
+
+            <tr>
+                <th>Số tiết</th>
+                <td>@Html.DisplayFor(model => model.SoTiet)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <br />
+            <br />
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

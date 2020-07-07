@@ -1,0 +1,59 @@
+﻿@model FinalProject.Models.LOAIMON
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h3>Bạn có muốn xóa Loại môn này không?</h3>
+<div>
+    <table class="table table-bordered" width="100%" cellspacing="0">
+        <tr>
+            <th>
+                Mã loại môn
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.MaLoaiMon)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Tên loại môn
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.TenLoaiMon)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Số tiết tín chỉ
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.SoTietTC)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+                Số tiền tín chỉ
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.SoTienTC)
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            <br />
+            <br />
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

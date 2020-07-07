@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FinalProject.Models.PHIEUTHU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SinhVien/Views/Shared/LayoutSinhVien.cshtml";
+}
+
+<h2>Danh sách phiếu thu</h2>
+
+
+<!-- DataTales -->
+<div class="card shadow mb-4">
+    @*<div class="card-header py-3">
+            @Html.ActionLink("ĐKHP", "Create", "PHIEU_DK", new { @class = "btn btn-success" })
+        </div>*@
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Số phiếu thu
+                                </th>
+                                <th>
+                                    Ngày lập
+                                </th>
+                                <th>
+                                    Số Tiền Thu
+                                </th>
+                                <th>
+                                    Mã Sinh Viên
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    Số phiết thu
+                                </th>
+                                <th>
+                                    Ngày lập
+                                </th>
+                                <th>
+                                    Số Tiền Thu
+                                </th>
+                                <th>
+                                    Mã Sinh Viên
+                                </th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in ViewBag.ListPhieuThu)
+                        {
+                            <tr>
+                                <td>
+                                    @item.SoPhieuThu
+                                </td>
+                                <td>
+                                    @item.NgayLap
+                                </td>
+                                <td>
+                                    @item.SoTienThu
+                                </td>
+                                <td>
+                                    @item.PHIEU_DK.MaSinhVien
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" href="@Url.Action("Details", "PHIEUTHUs", new { id = item.SoPhieuThu, id_sv = ViewData["TenDangNhap"] })">Chi tiết</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

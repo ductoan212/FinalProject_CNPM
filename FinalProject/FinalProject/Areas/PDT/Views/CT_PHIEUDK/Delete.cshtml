@@ -1,0 +1,42 @@
+﻿@model FinalProject.Models.CT_PHIEUDK
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Bạn có chắc muốn xóa môn học này không?</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Mã môn học
+        </th>
+        <td>
+            @Model.DS_MONHOC_MO.MaMonHoc
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Tên môn học
+        </th>
+        <td>
+            @Model.DS_MONHOC_MO.MONHOC.TenMonHoc
+        </td>
+    </tr>
+</table>
+@if (ViewBag.m == "Sai")
+{
+    <div class="alert alert-danger">Không thành công !! </div>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            @Html.ActionLink("Không", "Details", "PHIEU_DK", new { @id = Model.SoPhieuDK }, new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

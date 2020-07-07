@@ -1,0 +1,121 @@
+﻿@model IEnumerable<FinalProject.Models.SINHVIEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Danh sách Sinh viên</h1>
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("Quản lý Huyện", "Index", "HUYENs", null, new { @class = "btn btn-secondary" })
+
+        @Html.ActionLink("Quản lý Tỉnh", "Index", "TINHs", null, new { @class = "btn btn-info" })
+
+        @Html.ActionLink("Quản lý Đối tượng", "Index", "DOITUONGs", null, new { @class = "btn btn-success" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>
+                                    MSSV
+                                </th>
+                                <th>
+                                    Họ tên
+                                </th>
+                                <th>
+                                    Giới tính
+                                </th>
+                                <th>
+                                    Ngày sinh
+                                </th>
+                                <th>
+                                    Loại đối tượng
+                                </th>
+                                <th>
+                                    Quê quán
+                                </th>
+                                <th>
+                                    Ngành
+                                </th>
+                                <th style="width:100px">
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    MSSV
+                                </th>
+                                <th>
+                                    Họ tên
+                                </th>
+                                <th>
+                                    Giới tính
+                                </th>
+                                <th>
+                                    Ngày sinh
+                                </th>
+                                <th>
+                                    Loại đối tượng
+                                </th>
+                                <th>
+                                    Quê quán
+                                </th>
+                                <th>
+                                    Ngành
+                                </th>
+                                <th>
+                                    Thao tác
+                                </th>
+                            </tr>
+                        </tfoot>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaSinhVien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoTen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgaySinh.Day)/@Html.DisplayFor(modelItem => item.NgaySinh.Month)/@Html.DisplayFor(modelItem => item.NgaySinh.Year)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DOITUONG.TenDoiTuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HUYEN.TenHuyen) - @Html.DisplayFor(modelItem => item.HUYEN.TINH.TenTinh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NGANH.TenNganh)
+                                </td>
+                                <td>
+                                            <a class="btn btn-outline-primary w-75" href="@Url.Action("Edit", "SINHVIENs", new { id = item.MaSinhVien })">Sửa</a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

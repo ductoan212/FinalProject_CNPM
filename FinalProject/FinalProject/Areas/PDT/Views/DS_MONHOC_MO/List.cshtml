@@ -1,0 +1,105 @@
+﻿@model FinalProject.Models.DS_MONHOC_MO
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    @*<script src="~/scripts/bootstrap.min.js"></script>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    @*<script src="~/scripts/bootstrap.min.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DataTable').DataTable();
+            $('#checkBoxAll').click(function () {
+                if ($(this).is(":checked")) {
+                    $(".chkCheckBoxId").prop("checked", true)
+                }
+                else {
+                    $(".chkCheckBoxId").prop("checked", false)
+                }
+            });
+        });
+    </script>
+</head>
+
+<h2>Danh sách môn học</h2>
+
+@using (Html.BeginForm("List", "DS_MONHOC_MO", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+
+
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Check
+                                        </th>
+                                        <th>
+                                            Mã môn học
+                                        </th>
+                                        <th>
+                                            Tên môn học
+                                        </th>
+                                        <th>
+                                            Số tiết
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.MonHoc)
+                                    {
+                                        @*@if( item.MaMonHoc !)*@
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="ID" value="@item.MaMonHoc" class="custom-checkbox chkCheckBoxId" />
+                                            </td>
+                                            <td>
+                                                @*@Html.CheckBoxFor(model => model.IsChecked, new { @value = item.MaMonHoc, @checked = "checked" })*@
+                                                @*@Html.CheckBoxFor(model => model.IsChecked, new { @checked = "checked" });
+                                            @Html.CheckBoxFor(model => model.IsChecked, new { @checked = "checked" });*@
+                                                @item.MaMonHoc
+                                            </td>
+                                            <td>
+                                                @item.TenMonHoc
+                                            </td>
+                                            <td>
+                                                @item.SoTiet
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @if (ViewBag.IsNull == 1)
+    {
+        <div class="alert alert-danger">Chưa chọn môn học</div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}

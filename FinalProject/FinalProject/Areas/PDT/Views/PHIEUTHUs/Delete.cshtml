@@ -1,0 +1,50 @@
+﻿@model FinalProject.Models.PHIEUTHU
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PHIEUTHU</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayLap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTienThu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTienThu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHIEU_DK.MaSinhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHIEU_DK.MaSinhVien)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

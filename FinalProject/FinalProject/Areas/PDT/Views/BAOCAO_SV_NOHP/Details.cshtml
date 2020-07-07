@@ -1,0 +1,44 @@
+﻿@model FinalProject.Models.BAOCAO_SV_NOHP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/PDT/Views/Shared/LayoutPDT.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BAOCAO_SV_NOHP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTienConLai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTienConLai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HKNH.HocKy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HKNH.HocKy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SINHVIEN.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SINHVIEN.HoTen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
