@@ -37,8 +37,11 @@ namespace FinalProject.Areas.Admin.Controllers
         }
 
         // GET: Admin/NGUOIDUNGs/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.m = "Dung";
+            if (id == 1)
+                ViewBag.m = "Sai";
             ViewBag.IDNhomNguoiDung = new SelectList(db.NHOMNGUOIDUNGs, "IDNhomNguoiDung", "TenNhomNguoiDung");
             return View();
         }
@@ -50,15 +53,22 @@ namespace FinalProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TenDangNhap,MatKhau,IDNhomNguoiDung")] NGUOIDUNG nGUOIDUNG)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.NGUOIDUNGs.Add(nGUOIDUNG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.NGUOIDUNGs.Add(nGUOIDUNG);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.IDNhomNguoiDung = new SelectList(db.NHOMNGUOIDUNGs, "IDNhomNguoiDung", "TenNhomNguoiDung", nGUOIDUNG.IDNhomNguoiDung);
-            return View(nGUOIDUNG);
+                ViewBag.IDNhomNguoiDung = new SelectList(db.NHOMNGUOIDUNGs, "IDNhomNguoiDung", "TenNhomNguoiDung", nGUOIDUNG.IDNhomNguoiDung);
+                return View(nGUOIDUNG);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Create", "NGUOIDUNGs", new { id = 1 });
+            }
         }
 
         // GET: Admin/NGUOIDUNGs/Edit/5

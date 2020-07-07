@@ -57,16 +57,16 @@
             <div class="sidebar-heading">
                 Dịch vụ
             </div>
-            <li class="nav-item btn btn-outline-info p-0">
+            <li class="nav-item btn btn-outline-info p-0" style="border:none">
                 <a class="nav-link" href="@Url.Action("Details", "SINHVIENs", new { id = ViewData["TenDangNhap"]})">Lý lịch sinh viên</a>
             </li>
 
-            <li class="nav-item btn btn-outline-info p-0">
+            <li class="nav-item btn btn-outline-info p-0" style="border:none">
                 <a class="nav-link" href="@Url.Action("Index", "CT_NGANH", new { id = ViewData["TenDangNhap"]})">Chương trình học</a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item btn btn-outline-info p-0">
+            <li class="nav-item btn btn-outline-info p-0" style="border:none">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                    @* <i class="fas fa-fw fa-cog"></i>*@
                     <span style="font-size:inherit">Học phần</span>
@@ -80,7 +80,7 @@
                 </div>
 
             </li>
-            <li class="nav-item btn btn-outline-info p-0">
+            <li class="nav-item btn btn-outline-info p-0" style="border:none">
                 @Html.ActionLink("Thông tin phiếu thu", "Index", "PHIEUTHUs", new { id = ViewData["TenDangNhap"] }, new { @class = "nav-link" })
             </li>
             <hr class="sidebar-divider">

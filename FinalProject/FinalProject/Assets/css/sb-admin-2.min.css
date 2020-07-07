@@ -10392,18 +10392,31 @@ a:focus {
             }
 
             .sidebar .nav-item .nav-link[data-toggle=collapse]::after {
-                width: 1rem;
+/*                width: 1rem;*/
                 text-align: center;
                 float: right;
                 vertical-align: 0;
                 border: 0;
                 font-weight: 900;
                 content: '\f107';
-                font-family: 'Font Awesome 5 Free'
+                font-family: 'Font Awesome 5 Free';
+                
+                /* border-color: yellow; */
+                background-color: whitesmoke;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                color: blue;
             }
 
             .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
-                content: '\f105'
+                content: '\f105';
+                /* border-color: yellow; */
+                background-color: whitesmoke;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                color: blue!important;
             }
 
         .sidebar .sidebar-brand .sidebar-brand-icon i {
@@ -10721,14 +10734,20 @@ a:focus {
     }
 }
 
-.bg-login-image {
+.hinh-login {
     background: url(https://www.clarku.edu/wp-content/uploads/2020/06/2020-Jonas-Clark-Hall-12-May-01.jpg);
     background-position: center;
     background-size: cover
 }
 
+.bg-login-image {
+    background: url(https://source.unsplash.com/oWTW-jNGl9I/600x800);
+    background-position: center;
+    background-size: cover
+}
+
 .bg-register-image {
-    background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+    background: url(https://www.clarku.edu/wp-content/uploads/2020/06/2020-Jonas-Clark-Hall-12-May-01.jpg);
     background-position: center;
     background-size: cover
 }
