@@ -27,17 +27,11 @@ Thành viên:
 
 - Bấm vào IIS Express để chạy chương trình
 
-- <img src="C:\Users\HP\AppData\Roaming\marktext\images\2020-07-07-13-18-29-image.png" title="" alt="" width="713">
-
-- Sau khi chạy ta có màn hình sau:
-  
-  <img title="" src="C:\Users\HP\AppData\Roaming\marktext\images\2020-07-07-13-24-22-image.png" alt="" width="806">
+- Sau khi chạy ta có màn hình login
 
 ##### Cách 2: Từ link GitHub https://github.com/ductoan212/FinalProject_CNPM.git
 
 - Chọn branch master 
-  
-  ![](C:\Users\HP\AppData\Roaming\marktext\images\2020-07-07-13-21-07-image.png)
 
 - Chọn mục Code để download file ZIP về hoặc clone project về để tiến hành chạy
 
