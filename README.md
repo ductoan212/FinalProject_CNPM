@@ -41,6 +41,6 @@ Thành viên:
 > 
 > 1. Username: Admin01. Pass: 1
 > 
-> 2. Username: PDT. Pass: 1
+> 2. Username: PDT01. Pass: 1
 > 
 > 3. Username: mã số sinh viên. Pass: 1
