@@ -104,10 +104,17 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DOITUONG dOITUONG = db.DOITUONGs.Find(id);
-            db.DOITUONGs.Remove(dOITUONG);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                DOITUONG dOITUONG = db.DOITUONGs.Find(id);
+                db.DOITUONGs.Remove(dOITUONG);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Delete", "DOITUONGs", new { id = id });
+            }
         }
 
         protected override void Dispose(bool disposing)

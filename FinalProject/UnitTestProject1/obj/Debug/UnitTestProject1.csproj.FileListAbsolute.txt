@@ -1,0 +1,14 @@
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\obj\Debug\UnitTestProject1.csprojAssemblyReference.cache
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CoreCompileInputs.cache
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\obj\Debug\UnitTestProject1.csproj.CopyComplete
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
