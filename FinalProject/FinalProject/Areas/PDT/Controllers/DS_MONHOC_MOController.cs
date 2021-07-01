@@ -14,7 +14,7 @@ namespace FinalProject.Areas.PDT.Controllers
     public class DS_MONHOC_MOController : Controller
     {
         private CNPMEntities db = new CNPMEntities();
-        private static string hk;
+        public string hk;
 
         // GET: DS_MONHOC_MO
         public ActionResult Index(string id)
