@@ -124,9 +124,13 @@ namespace FinalProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.Find(id);
-            db.NGUOIDUNGs.Remove(nGUOIDUNG);
-            db.SaveChanges();
+            try
+            {
+                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.Find(id);
+                db.NGUOIDUNGs.Remove(nGUOIDUNG);
+                db.SaveChanges();
+            }
+            catch { }
             return RedirectToAction("Index");
         }
 

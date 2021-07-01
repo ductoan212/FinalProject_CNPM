@@ -4,13 +4,16 @@ using FinalProject.Areas.Login.Controllers;
 using System.Web.Mvc;
 using FinalProject.Models;
 using FinalProject.Areas.PDT.Controllers;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace TestProjectKCPM
 {
     [TestClass]
     public class QuanLyTinh
     {
-        [TestMethod]
+        [Test]
+        [TestCase()]
         public void ViewDSTinh()
         {
             TINHsController tinhController = new TINHsController();
@@ -23,18 +26,28 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void DetailTinh()
+        [Test]
+        [TestCase("0039", true)]
+        [TestCase("0099", false)]
+        public void DetailTinh(string MaTinh, bool isNotNull)
         {
             TINHsController tinhController = new TINHsController();
 
-            ViewResult result = tinhController.Details("0039") as ViewResult;
+            ViewResult result = tinhController.Details(MaTinh) as ViewResult;
 
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Model);
+            if (isNotNull)
+            {
+                Assert.IsNotNull(result);
+                Assert.IsNotNull(result.Model);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
         }
 
-        [TestMethod]
+        [Test]
+        [TestCase()]
         public void CreateViewTinh()
         {
             TINHsController tinhController = new TINHsController();
@@ -47,29 +60,42 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void CreatePostTinh()
+        [Test]
+        [TestCase("0002", "Hồ Chí Minh", "Index")]
+        [TestCase("02", "Hồ Chí Minh", "Create")]
+        [TestCase("000002", "Hồ Chí Minh", "Create")]
+        [TestCase("0002", "Hồ Chí Minh Chí Minh Chí Minh Chí Minh Chí Minh Chí Minh Chí Minh Chí Minh", "Create")]
+        public void CreatePostTinh(string MaTinh, string TenTinh, string expected)
         {
             TINHsController tinhController = new TINHsController();
 
-            tinhController.DeleteConfirmed("0002");
-            TINH tinh = new TINH { MaTinh = "0002", TenTinh = "Hồ Chí Minh" };
+            tinhController.DeleteConfirmed(MaTinh);
+            TINH tinh = new TINH { 
+                MaTinh = MaTinh, 
+                TenTinh = TenTinh  
+            };
             RedirectToRouteResult result = tinhController.Create(tinh) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void EditViewTinh()
+        [Test]
+        [TestCase("0002", true)]
+        [TestCase("0099", false)]
+        [TestCase("99", false)]
+        [TestCase("0000099", false)]
+        public void EditViewTinh(string MaTinh, bool isNotNull)
         {
             TINHsController tinhController = new TINHsController();
 
-            TINH tinh = new TINH { MaTinh = "0002", TenTinh = "Hồ Chí Minh" };
+            TINH tinh = new TINH { 
+                MaTinh = MaTinh, 
+                TenTinh = "Hồ Chí Minh" 
+            };
             tinhController.Create(tinh);
-            ViewResult result = tinhController.Edit("0002") as ViewResult;
+            ViewResult result = tinhController.Edit(MaTinh) as ViewResult;
 
             Assert.IsNotNull(result);
             string expected = "";
@@ -77,50 +103,75 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void EditPostTinh()
+        [Test]
+        [TestCase("0002", "Sài Gòn", "Index")]
+        [TestCase("0002", "", "Edit")]
+        [TestCase("0002", "TenTinhNew TenTinhNew TenTinhNew TenTinhNew TenTinhNew TenTinhNew TenTinhNew", "Edit")]
+        public void EditPostTinh(string MaTinh, string TenTinhNew, string expected)
         {
             TINHsController tinhController = new TINHsController();
 
-            TINH tinh = new TINH { MaTinh = "0002", TenTinh = "Hồ Chí Minh" };
+            TINH tinh = new TINH { 
+                MaTinh = MaTinh, 
+                TenTinh = "Hồ Chí Minh" 
+            };
             tinhController.Create(tinh);
-            tinh.TenTinh = "TP Hồ Chí Minh";
+
+            tinh.TenTinh = TenTinhNew;
             RedirectToRouteResult result = tinhController.Edit(tinh) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void DeleteViewTinh()
+        [Test]
+        [TestCase("0002", true)]
+        [TestCase("01", false)]
+        [TestCase("00002", false)]
+        [TestCase("0099", false)]
+        public void DeleteViewTinh(string MaTinh, bool isNotNull)
         {
             TINHsController tinhController = new TINHsController();
 
-            TINH tinh = new TINH { MaTinh = "0002", TenTinh = "Hồ Chí Minh" };
-            tinhController.Create(tinh);
-            ViewResult result = tinhController.Delete("0002") as ViewResult;
+            TINH tinh = new TINH { MaTinh = MaTinh, TenTinh = "Hồ Chí Minh" };
+            if(isNotNull) {
+                tinhController.Create(tinh);
+            }
+            
+            ViewResult result = tinhController.Delete(MaTinh) as ViewResult;
 
-            Assert.IsNotNull(result);
-            string expected = "";
-            string actual = result.ViewName;
-            Assert.AreEqual(expected, actual);
+            if (isNotNull)
+            {
+                Assert.IsNotNull(result);
+                string expected = "";
+                string actual = result.ViewName;
+                Assert.AreEqual(expected, actual);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
         }
 
-        [TestMethod]
-        public void DeletePostTinh()
+        [Test]
+        [TestCase("0002", "Index")]
+        [TestCase("0099", "Delete")]
+        [TestCase("01", "Delete")]
+        [TestCase("000002", "Delete")]
+        public void DeletePostTinh(string MaTinh, string expected)
         {
             TINHsController tinhController = new TINHsController();
-            TINH tinh = new TINH { MaTinh = "0002", TenTinh = "Hồ Chí Minh" };
-            tinhController.Create(tinh);
-            RedirectToRouteResult result = tinhController.DeleteConfirmed("0002") as RedirectToRouteResult;
+            TINH tinh = new TINH { MaTinh = MaTinh, TenTinh = "Hồ Chí Minh" };
+            if(expected=="Index")
+            {
+                tinhController.Create(tinh);
+            }
+            RedirectToRouteResult result = tinhController.DeleteConfirmed(MaTinh) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
-
     }
 }

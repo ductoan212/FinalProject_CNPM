@@ -4,13 +4,16 @@ using FinalProject.Areas.Login.Controllers;
 using System.Web.Mvc;
 using FinalProject.Models;
 using FinalProject.Areas.PDT.Controllers;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace TestProjectKCPM
 {
     [TestClass]
     public class QuanLyHuyen
     {
-        [TestMethod]
+        [Test]
+        [TestCase()]
         public void ViewDSHuyen()
         {
             HUYENsController huyenController = new HUYENsController();
@@ -23,18 +26,29 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void DetailHuyen()
+        [Test]
+        [TestCase("3901", true)]
+        [TestCase("0001", false)]
+        public void DetailHuyen(string MaHuyen, bool isNotNull)
         {
             HUYENsController huyenController = new HUYENsController();
 
-            ViewResult result = huyenController.Details("3901") as ViewResult;
+            ViewResult result = huyenController.Details(MaHuyen) as ViewResult;
 
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result.Model);
+            if(isNotNull)
+            {
+                Assert.IsNotNull(result);
+                Assert.IsNotNull(result.Model);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
+            
         }
 
-        [TestMethod]
+        [Test]
+        [TestCase()]
         public void CreateViewHuyen()
         {
             HUYENsController huyenController = new HUYENsController();
@@ -47,80 +61,148 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void CreatePostHuyen()
+        [Test]
+        [TestCase("3910", "Tuy An", "0039", true, "Index")]
+        [TestCase("3910", "Tuy An", "0099", true, "Create")]
+        [TestCase("39100", "Tuy An", "0039", true, "Create")]
+        [TestCase("391", "Tuy An", "0039", true, "Create")]
+        public void CreatePostHuyen(
+            string MaHuyen, string TenHuyen, 
+            string MaTinh, bool UuTien, 
+            string expected)
         {
             HUYENsController huyenController = new HUYENsController();
 
-            huyenController.DeleteConfirmed("3910");
-            HUYEN huyen = new HUYEN { MaHuyen="3910", TenHuyen = "Tuy An", MaTinh="0039", UuTien=true };
+            huyenController.DeleteConfirmed(MaHuyen);
+            HUYEN huyen = new HUYEN { 
+                MaHuyen = MaHuyen, 
+                TenHuyen = TenHuyen, 
+                MaTinh = MaTinh, 
+                UuTien = UuTien
+            };
             RedirectToRouteResult result = huyenController.Create(huyen) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void EditViewHuyen()
+        [Test]
+        [TestCase("3910", true)]
+        [TestCase("9999", false)]
+        public void EditViewHuyen(string MaHuyen, bool isNotNull)
         {
             HUYENsController huyenController = new HUYENsController();
 
-            HUYEN huyen = new HUYEN { MaHuyen = "3910", TenHuyen = "Tuy An", MaTinh = "0039", UuTien = true };
-            huyenController.Create(huyen);
-            ViewResult result = huyenController.Edit("3910") as ViewResult;
+            HUYEN huyen = new HUYEN { 
+                MaHuyen = MaHuyen, 
+                TenHuyen = "Tuy An", 
+                MaTinh = "0039", 
+                UuTien = true 
+            };
+            if(isNotNull)
+            {
+                huyenController.Create(huyen);
+            }
+            ViewResult result = huyenController.Edit(MaHuyen) as ViewResult;
 
-            Assert.IsNotNull(result);
-            string expected = "";
-            string actual = result.ViewName;
-            Assert.AreEqual(expected, actual);
+            if(isNotNull)
+            {
+                Assert.IsNotNull(result);
+                string expected = "";
+                string actual = result.ViewName;
+                Assert.AreEqual(expected, actual);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
         }
 
-        [TestMethod]
-        public void EditPostHuyen()
+        [Test]
+        [TestCase("3910", "Song Hinh", "0039", "Index")]
+        [TestCase("3910", "Song Hinh", "0099", "Edit")]
+        [TestCase("3910", "", "0099", "Edit")]
+        [TestCase("3910", "Song Hinh Song Hinh Song Hinh Song Hinh Song Hinh Song Hinh Song Hinh", "0099", "Edit")]
+        public void EditPostHuyen(string MaHuyen, string TenHuyenNew, string MaTinhNew, string expected)
         {
             HUYENsController huyenController = new HUYENsController();
 
-            HUYEN huyen = new HUYEN { MaHuyen = "3910", TenHuyen = "Tuy An", MaTinh = "0039", UuTien = true };
+            HUYEN huyen = new HUYEN { 
+                MaHuyen = MaHuyen, 
+                TenHuyen = "Tuy An", 
+                MaTinh = "0039", 
+                UuTien = true 
+            };
             huyenController.Create(huyen);
-            huyen.TenHuyen = "Song Hinh";
+
+            huyen.TenHuyen = TenHuyenNew;
+            huyen.MaTinh= MaTinhNew;
             RedirectToRouteResult result = huyenController.Edit(huyen) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void DeleteViewHuyen()
+        [Test]
+        [TestCase("39100", true)]
+        [TestCase("9999", false)]
+        public void DeleteViewHuyen(string MaHuyen, bool isNotNull)
         {
             HUYENsController huyenController = new HUYENsController();
 
-            HUYEN huyen = new HUYEN { MaHuyen = "3910", TenHuyen = "Tuy An", MaTinh = "0039", UuTien = true };
-            huyenController.Create(huyen);
-            ViewResult result = huyenController.Delete("3910") as ViewResult;
+            HUYEN huyen = new HUYEN
+            {
+                MaHuyen = MaHuyen,
+                TenHuyen = "Tuy An",
+                MaTinh = "0039",
+                UuTien = true
+            };
+            if(isNotNull)
+            {
+                huyenController.Create(huyen);
+            }
+            ViewResult result = huyenController.Delete(MaHuyen) as ViewResult;
 
-            Assert.IsNotNull(result);
-            string expected = "";
-            string actual = result.ViewName;
-            Assert.AreEqual(expected, actual);
+            if (isNotNull)
+            {
+                Assert.IsNotNull(result);
+                string expected = "";
+                string actual = result.ViewName;
+                Assert.AreEqual(expected, actual);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
         }
 
-        [TestMethod]
-        public void DeletePostHuyen()
+        [Test]
+        [TestCase("3910", "Index")]
+        [TestCase("3999", "Delete")]
+        public void DeletePostHuyen(string MaHuyen, string expected)
         {
             HUYENsController huyenController = new HUYENsController();
-            HUYEN huyen = new HUYEN { MaHuyen = "3910", TenHuyen = "Tuy An", MaTinh = "0039", UuTien = true };
-            huyenController.Create(huyen);
-            RedirectToRouteResult result = huyenController.DeleteConfirmed("3910") as RedirectToRouteResult;
+
+            
+            HUYEN huyen = new HUYEN
+            {
+                MaHuyen = MaHuyen,
+                TenHuyen = "Tuy An",
+                MaTinh = "0039",
+                UuTien = true
+            };
+            if (expected == "Index")
+            {
+                huyenController.Create(huyen);
+            }
+
+            RedirectToRouteResult result = huyenController.DeleteConfirmed(MaHuyen) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);
-            string expected = "Index";
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
-
     }
 }
