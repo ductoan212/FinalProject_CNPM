@@ -2,7 +2,6 @@
 using System;
 using FinalProject.Areas.Login.Controllers;
 using System.Web.Mvc;
-
 namespace TestProjectKCPM
 {
     [TestClass]
@@ -43,5 +42,6 @@ namespace TestProjectKCPM
             string actual = result.RouteValues["action"].ToString();
             Assert.AreEqual(expected, actual);
         }
+
     }
 }

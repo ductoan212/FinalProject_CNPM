@@ -35,5 +35,19 @@ namespace TestProjectKCPM.NhapDanhSachMonHoc
             RedirectToRouteResult result = mONHOCsController.Create(mONHOC) as RedirectToRouteResult;
             Assert.AreEqual(expected, result.RouteValues["action"].ToString());
         }
+
+        [Test]
+        //[TestCase("IT01", "Details")] // Trả về được do có
+        //[TestCase("IT02", "Details")] // Trả về được do có
+        [TestCase("IT01", "")] // Trả về được do có
+        [TestCase("IT02", "")] // Trả về được do có
+        [TestCase("")] // FAILED
+        public void DetailsMonHocTest(string id)
+        {
+            MONHOCsController mONHOCsController = new MONHOCsController();
+            ViewResult result = mONHOCsController.Details(id) as ViewResult;
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Model);
+        }
     }
 }
