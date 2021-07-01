@@ -14,6 +14,12 @@ namespace FinalProject.Areas.PDT.Controllers
     {
         private CNPMEntities db = new CNPMEntities();
 
+        public SINHVIEN GetSINHVIEN(string id)
+        {
+            SINHVIEN sINHVIEN = db.SINHVIENs.Find(id);
+            return sINHVIEN;
+        }
+
         // GET: PDT/SINHVIENs
         public ActionResult Index()
         {
@@ -66,6 +72,7 @@ namespace FinalProject.Areas.PDT.Controllers
             return View();
         }
 
+
         // POST: SINHVIENs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -92,6 +99,7 @@ namespace FinalProject.Areas.PDT.Controllers
             catch (Exception e)
             {
                 return RedirectToAction("Create", "SINHVIENs", new { id = 1 });
+                throw e;
             }
         }
 
@@ -130,6 +138,7 @@ namespace FinalProject.Areas.PDT.Controllers
                 {
                     db.Entry(sINHVIEN).State = EntityState.Modified;
                     db.SaveChanges();
+
                     return RedirectToAction("Index");
                 }
                 ViewBag.MaDoiTuong = new SelectList(db.DOITUONGs, "MaDoiTuong", "TenDoiTuong", sINHVIEN.MaDoiTuong);
@@ -141,6 +150,7 @@ namespace FinalProject.Areas.PDT.Controllers
             catch(Exception e)
             {
                 return RedirectToAction("Edit", "SINHVIENs", new { id = sINHVIEN.MaSinhVien, ed = 1 });
+                throw e;
             }
         }
 
@@ -164,10 +174,18 @@ namespace FinalProject.Areas.PDT.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SINHVIEN sINHVIEN = db.SINHVIENs.Find(id);
-            db.SINHVIENs.Remove(sINHVIEN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                SINHVIEN sINHVIEN = db.SINHVIENs.Find(id);
+                db.SINHVIENs.Remove(sINHVIEN);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Delete", "SINHVIENs", new { id = id});
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

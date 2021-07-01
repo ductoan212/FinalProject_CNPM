@@ -26,7 +26,8 @@ namespace FinalProject.Models
         [Required(ErrorMessage = "Cần nhập mã sinh viên")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Mã sinh viên phải là số")]
         [MinLength(4, ErrorMessage = "Mã sinh viên phải có 4 ký tự")]
-        [Index("Ix_MaSinhVien", Order = 1, IsUnique = true)]
+        [Index("Ix_MaSinhVien", Order = 1, IsUnique = false)]
+        //[Index("Ix_MaSinhVien", Order = 1)]
         public string MaSinhVien { get; set; }
 
         [Required(ErrorMessage = "Cần nhập tên sinh viên")]
