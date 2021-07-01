@@ -122,3 +122,13 @@ F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\TestProjectKCPM\obj\Debug\Test
 F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\TestProjectKCPM\obj\Debug\TestProjectKCPM.csproj.CopyComplete
 F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\TestProjectKCPM\obj\Debug\TestProjectKCPM.dll
 F:\AUTOMATION TEST\FinalProject_CNPM\FinalProject\TestProjectKCPM\obj\Debug\TestProjectKCPM.pdb
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\NUnit3.TestAdapter.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\NUnit3.TestAdapter.pdb
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\nunit.engine.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\nunit.engine.api.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\nunit.engine.core.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\testcentric.engine.metadata.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\nunit.framework.dll
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\Visual Studio\FinalProject_CNPM\FinalProject\TestProjectKCPM\bin\Debug\nunit.framework.xml
