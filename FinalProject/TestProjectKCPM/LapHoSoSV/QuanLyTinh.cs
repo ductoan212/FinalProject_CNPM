@@ -26,25 +26,25 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        [TestCase("0039", true)]
-        [TestCase("0099", false)]
-        public void DetailTinh(string MaTinh, bool isNotNull)
-        {
-            TINHsController tinhController = new TINHsController();
+        //[Test]
+        //[TestCase("0039", true)]
+        //[TestCase("0099", false)]
+        //public void DetailTinh(string MaTinh, bool isNotNull)
+        //{
+        //    TINHsController tinhController = new TINHsController();
 
-            ViewResult result = tinhController.Details(MaTinh) as ViewResult;
+        //    ViewResult result = tinhController.Details(MaTinh) as ViewResult;
 
-            if (isNotNull)
-            {
-                Assert.IsNotNull(result);
-                Assert.IsNotNull(result.Model);
-            }
-            else
-            {
-                Assert.IsNull(result);
-            }
-        }
+        //    if (isNotNull)
+        //    {
+        //        Assert.IsNotNull(result);
+        //        Assert.IsNotNull(result.Model);
+        //    }
+        //    else
+        //    {
+        //        Assert.IsNull(result);
+        //    }
+        //}
 
         [Test]
         [TestCase()]
@@ -83,7 +83,7 @@ namespace TestProjectKCPM
 
         [Test]
         [TestCase("0002", true)]
-        [TestCase("0099", false)]
+        [TestCase("0088", false)]
         [TestCase("99", false)]
         [TestCase("0000099", false)]
         public void EditViewTinh(string MaTinh, bool isNotNull)
@@ -94,13 +94,24 @@ namespace TestProjectKCPM
                 MaTinh = MaTinh, 
                 TenTinh = "Hồ Chí Minh" 
             };
-            tinhController.Create(tinh);
+            tinhController.DeleteConfirmed(MaTinh);
+            if (isNotNull)
+            {
+                tinhController.Create(tinh);
+            }
             ViewResult result = tinhController.Edit(MaTinh) as ViewResult;
 
-            Assert.IsNotNull(result);
-            string expected = "";
-            string actual = result.ViewName;
-            Assert.AreEqual(expected, actual);
+            if (isNotNull)
+            {
+                Assert.IsNotNull(result);
+                string expected = "";
+                string actual = result.ViewName;
+                Assert.AreEqual(expected, actual);
+            }
+            else
+            {
+                Assert.IsNull(result);
+            }
         }
 
         [Test]
@@ -129,7 +140,7 @@ namespace TestProjectKCPM
         [TestCase("0002", true)]
         [TestCase("01", false)]
         [TestCase("00002", false)]
-        [TestCase("0099", false)]
+        [TestCase("0088", false)]
         public void DeleteViewTinh(string MaTinh, bool isNotNull)
         {
             TINHsController tinhController = new TINHsController();

@@ -26,26 +26,26 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        [TestCase("3901", true)]
-        [TestCase("0001", false)]
-        public void DetailHuyen(string MaHuyen, bool isNotNull)
-        {
-            HUYENsController huyenController = new HUYENsController();
+        //[Test]
+        //[TestCase("3901", true)]
+        //[TestCase("0001", false)]
+        //public void DetailHuyen(string MaHuyen, bool isNotNull)
+        //{
+        //    HUYENsController huyenController = new HUYENsController();
 
-            ViewResult result = huyenController.Details(MaHuyen) as ViewResult;
+        //    ViewResult result = huyenController.Details(MaHuyen) as ViewResult;
 
-            if(isNotNull)
-            {
-                Assert.IsNotNull(result);
-                Assert.IsNotNull(result.Model);
-            }
-            else
-            {
-                Assert.IsNull(result);
-            }
+        //    if(isNotNull)
+        //    {
+        //        Assert.IsNotNull(result);
+        //        Assert.IsNotNull(result.Model);
+        //    }
+        //    else
+        //    {
+        //        Assert.IsNull(result);
+        //    }
             
-        }
+        //}
 
         [Test]
         [TestCase()]
@@ -146,7 +146,7 @@ namespace TestProjectKCPM
         }
 
         [Test]
-        [TestCase("39100", true)]
+        [TestCase("3910", true)]
         [TestCase("9999", false)]
         public void DeleteViewHuyen(string MaHuyen, bool isNotNull)
         {

@@ -109,46 +109,46 @@ namespace TestProjectKCPM
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        [TestCase("DT07")]
-        [TestCase("DT01")]
-        public void DeleteViewDoiTuong(string MaDoiTuong)
-        {
-            DOITUONGsController doituongController = new DOITUONGsController();
+        //[Test]
+        //[TestCase("DT07")]
+        //[TestCase("DT01")]
+        //public void DeleteViewDoiTuong(string MaDoiTuong)
+        //{
+        //    DOITUONGsController doituongController = new DOITUONGsController();
 
-            DOITUONG doituong = new DOITUONG { 
-                MaDoiTuong = MaDoiTuong, 
-                TenDoiTuong = "Đối tượng test", 
-                TiLeGiamHocPhi = 10 
-            };
-            doituongController.Create(doituong);
-            ViewResult result = doituongController.Delete(MaDoiTuong) as ViewResult;
+        //    DOITUONG doituong = new DOITUONG { 
+        //        MaDoiTuong = MaDoiTuong, 
+        //        TenDoiTuong = "Đối tượng test", 
+        //        TiLeGiamHocPhi = 10 
+        //    };
+        //    doituongController.Create(doituong);
+        //    ViewResult result = doituongController.Delete(MaDoiTuong) as ViewResult;
 
-            Assert.IsNotNull(result);
-            string expected = "";
-            string actual = result.ViewName;
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.IsNotNull(result);
+        //    string expected = "";
+        //    string actual = result.ViewName;
+        //    Assert.AreEqual(expected, actual);
+        //}
 
-        [Test]
-        [TestCase("DT90", "Index")]
-        [TestCase("DT90", "Delete")]
-        public void DeletePostDoiTuong(string MaDoiTuong, string expected)
-        {
-            DOITUONGsController doituongController = new DOITUONGsController();
-            DOITUONG doituong = new DOITUONG
-            {
-                MaDoiTuong = MaDoiTuong,
-                TenDoiTuong = "Đối tượng test",
-                TiLeGiamHocPhi = 10
-            };
-            if(expected== "Index")
-                doituongController.Create(doituong);
-            RedirectToRouteResult result = doituongController.DeleteConfirmed(MaDoiTuong) as RedirectToRouteResult;
+        //[Test]
+        //[TestCase("DT90", "Index")]
+        //[TestCase("DT90", "Delete")]
+        //public void DeletePostDoiTuong(string MaDoiTuong, string expected)
+        //{
+        //    DOITUONGsController doituongController = new DOITUONGsController();
+        //    DOITUONG doituong = new DOITUONG
+        //    {
+        //        MaDoiTuong = MaDoiTuong,
+        //        TenDoiTuong = "Đối tượng test",
+        //        TiLeGiamHocPhi = 10
+        //    };
+        //    if(expected== "Index")
+        //        doituongController.Create(doituong);
+        //    RedirectToRouteResult result = doituongController.DeleteConfirmed(MaDoiTuong) as RedirectToRouteResult;
 
-            Assert.IsNotNull(result);
-            string actual = result.RouteValues["action"].ToString();
-            Assert.AreEqual(expected, actual);
-        }
+        //    Assert.IsNotNull(result);
+        //    string actual = result.RouteValues["action"].ToString();
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
