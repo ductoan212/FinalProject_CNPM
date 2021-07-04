@@ -87,7 +87,8 @@
     <Compile Include="LapHoSoSV\QuanLyDoiTuong.cs" />
     <Compile Include="LapHoSoSV\QuanLyTinh.cs" />
     <Compile Include="LapHoSoSV\QuanLyHuyen.cs" />
-    <Compile Include="MonHocMo.cs" />
+    <Compile Include="MonHocMo\HKNH.cs" />
+    <Compile Include="MonHocMo\MonHocMo.cs" />
     <Compile Include="NhapDanhSachMonHoc\MonHocTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

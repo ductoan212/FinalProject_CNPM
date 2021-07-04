@@ -150,7 +150,7 @@ namespace FinalProject.Areas.PDT.Controllers
                         db.SaveChanges();
                     }
                 }
-                catch
+                catch (Exception e)
                 {
                     ViewBag.err = 1;
                     return RedirectToAction("Create", new { @isErr = ViewBag.err });
